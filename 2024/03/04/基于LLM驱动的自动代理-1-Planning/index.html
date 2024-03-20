@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 基于LLM驱动的自动代理(1)-Planning · Hexo</title><meta name="description" content="基于LLM驱动的自动代理(1)-Planning - John Doe"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://tttturtle-russ.github.io/atom.xml" title="Hexo"><meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/sunchongsheng" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/pinggod" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/cv/" target="_self" class="nav-list-link">CV</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">基于LLM驱动的自动代理(1)-Planning</h1><div class="post-info">Mar 4, 2024</div><div class="post-content"><h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>本文是对<a target="_blank" rel="noopener" href="https://lilianweng.github.io/posts/2023-06-23-agent/">LLM Powered Autonomous Agents</a>的总结和读后感，该文章介绍了由大语言模型驱动的自动代理的原理，在大预言模型越来越流行和日渐强大的今天，使用大预言模型不仅可以进行文书，编码上的一些辅助，更可以成为一个通用的自主问题解决器，比如作为自动代理的驱动。</p>
+<p>本文主要从代理系统（ Agent System ）的组成角度进行介绍，一个代理系统由3个部件组成：</p>
+<ul>
+<li>规划器（ Planning ）</li>
+<li>记忆（ Memory ）</li>
+<li>工具调用 （ Tool Use ）<br><img src="/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-1-Planning/1.png"></li>
+</ul>
+<p>同时，本文还举出了三个LLM Powered Agent 实例：</p>
+<ul>
+<li>Secientific Discovery Agent：一个拥有多个外部专业工具的科学开发辅助工具，主要用于辅助化学药物的研发和合成。</li>
+<li>Generative Agent Simulation：一个用LLM驱动的虚拟任务模拟实验，其中有25个虚拟人物都由代理控制，用于模拟人类行为。</li>
+<li>Proof-of-Concept Exanples：使用AutoGPT对一些概念的验证的演示事例。</li>
+</ul>
+<p>文章最后还提出了构建LLM-Powered-Agent存在的一些限制和挑战：</p>
+<ul>
+<li>有限上下文长度：上下文长度的限制会限制对历史信息的总结，细节上的操作，API调用的上下文等方面。</li>
+<li>长期计划和任务分解的挑战：对于意料之外的错误的处理和学习使得Agent无法有效的进行长期规划和求解。</li>
+<li>自然语言接口的可靠性：大部分agent的输出都不一定可靠，因为LLM可能会处理错误，有时候甚至会变得“叛逆”。</li>
+</ul>
+<h2 id="组件一：规划器"><a href="#组件一：规划器" class="headerlink" title="组件一：规划器"></a>组件一：规划器</h2><blockquote>
+<p>A complicated task usually involves many steps. An agent needs to know what they are and plan ahead.</p>
+</blockquote>
+<p>对于规划器的执行过程主要分两个部分：<strong>任务分解（Task Decomposition）</strong>和 <strong>自我反省（Self-Reflection）</strong>。</p>
+<p>对于<strong>任务分解</strong>文中提到了两个概念：思维链（Chain of Thought，CoT）和思维树（Tree of Thought）。思维链是由 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2201.11903">Wei et al. 2022</a> 提出的，已经成为一个增强模型在复杂任务上的标准技术。模型被引导“一步步思考”来利用更多测试时间将复杂任务分解成小而简单的步骤。而思维树<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2305.10601">Yao et al. 2023</a>，是对于CoT的扩展。其原理是在CoT将复杂问题分解成每个step后，对每个step再生成多个想法，从而形成一个树状结构。对树结构的搜索方法基于给定的prompt或多数票（majority vote）决定为BFS或是DFS。</p>
+<p>其中还提到了一种方法：LLM+P <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2304.11477">Liu et al. 2023</a> 。主要是使用了一个外部经典规划器来进行长期规划。这种方法使用 PDDL （Planning Domain Definition Language）作为中间接口进行规划问题的描述，主要步骤如下所示：</p>
+<ol>
+<li>LLM将问题转化为 <a target="_blank" rel="noopener" href="https://planning.wiki/ref/pddl/problem">“Problem PDDL”</a></li>
+<li>然后请求外部的经典规划器基于一个已存在的<a target="_blank" rel="noopener" href="https://planning.wiki/ref/pddl/domain">“Domain PDDL”</a>生成一个PDDL规划。</li>
+<li>将 2 中生成的 PDDL 规划翻译成自然语言</li>
+</ol>
+<p>这个方法的核心在于将规划的任务交给外部的规划器，而不是LLM进行规划，这就要求步骤中的Domain PDDL和外部使用的规划器是适合且准确的。</p>
+<p><strong>自我反省</strong>对于人类是一个重要的方面，对于不如人类（目前来说）的机器，更是如此。对于自动代理来说，它通过完善过去做的决定以及改进之前的错误来迭代进化。</p>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2210.03629">ReAct</a> 通过将动作空间扩展为特定任务离散动作和语言空间组合，将推理和动作整合在LLM中。前者</p>
+<p>让 LLM 拥有与环境交互的能力，例如使用 Wikipedia 的搜索 API；而后者则提示 LLM 生成自然语言的推理追踪。</p>
+<p>ReAct 提示模板给 LLM 的思考整合了明确的步骤，大致如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Thought</span>: ...</span><br><span class="line"><span class="title class_">Action</span>: ...</span><br><span class="line"><span class="title class_">Observation</span>: ...</span><br><span class="line">... (<span class="title class_">Repeated</span> many times)</span><br></pre></td></tr></table></figure>
+
+<aside>
+💡 ReAct 方法是在 Act 方法的基础上进行了改进，加入了Thought这一栏，实验证明，ReAct 方法的表现要优于 Act 方法
+
+
+</aside>
+
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2303.11366">Reflxion</a> 是一个通过给代理配备动态记忆和自我反省能力从而提高模型推理能力的框架，Reflxion 有一个标准强化学习设置，其中动作空间的设置和 ReAct 一样，具体原理如图所示。</p>
+<p><img src="/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-1-Planning/2.png" alt="Untitled"></p>
+<p>在每一个动作$a_i$之后，代理都会计算其启发值$h_i$并根据结果选择性的重置环境开始一个新的试验。对于这个启发式函数$h$，其作用是发现模型中的效率低下和虚构问题并及时停止。</p>
+<p>自我反思的具体创建是通过二元组实现的，每个二元组都是一个失败的轨迹和理想的反思构成，具体来说失败的轨迹就是尝试过的但失败的执行序列，理想的反思就是将来要执行的可能成功的执行序列。这些二元组被添加到代理的记忆中，作为上下文使用。</p>
+<p>回顾链（ <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2302.02676">Chian of Hindsight</a> ，CoH ）鼓励模型通过展现过去的一系列输出来改进现有输出，并且每个都具有反馈信息。人类的反馈信息使用一个集合$D_h&#x3D;{(x,y_i,r_i,z_i)}_{i&#x3D;1}^{n}$来表示，其中$x$表示一个prompt，每一个$y_i$都是模型提供的补全，$r_i$是人对$y_i$的评分，$z_i$则是相应的人类对回顾的反馈。假设集合中的$z_i$是从大到小排列的，则这个过程变成了一个有监督的微调过程，输入序列的形式为</p>
+<p>$\tau_h&#x3D;(x,z_i,y_i,z_j,y_j,…z_n,y_n)$，其中i ≤ j ≤ n。在模型预测$y_j$的时候，会根据$j$之前的序列进行输出优化和改进。</p>
+<p>CoH 在训练过程中添加了正则化来控制模型过拟合问题，并且通过随机屏蔽过去的标记，预防捷径和复制行为的出现。</p>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2210.14215">Algorithm Distillation</a> 将该思想应用于强化学习的跨事件学习中，跨任务的执行序列这里我称之为$H$算法被封装在一个长期记忆政策里，这个方法的核心在于在每次代理和环境交互并且更加准确后，将学习历史喂入模型进行训练，目标和CoH不同的点在于训练模型而不是针对某个任务的训练。</p>
+<p>这个方法假设对于任何可以生成学习历史集合的算法，都可以通过对过去动作行为进行行为克隆将其“蒸馏”成一个神经网络。在每次训练中，该方法选择一个随机的任务和一个子序列$h\subseteq H$作为数据进行训练，这样一来训练过程便与任务本身无关。</p>
+<p><img src="/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-1-Planning/3.png" alt="Untitled"></p>
+<p>实际上，模型的上下文长度是很短的，所以需要每个任务的序列足够短才能构建起一个多任务序列，而每个多任务至少需要2-4个任务才能达到几乎完美的上下文中的强化学习算法。</p>
+<p>在与ED（expert distillation），源策略，RL^2的比较中，AD的表现接近于RL^2，但训练速度远快于RL^2，此外，当使用源策略的部分训练历史作为条件时，AD的改进速度也比ED基准算法快得多。</p>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><p>Weng, Lilian. (Jun 2023). LLM-powered Autonomous Agents”. Lil’Log. <a target="_blank" rel="noopener" href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a>.</p>
+</div></article></div></main><footer><div class="paginator"><a href="/2024/03/04/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-2-Memory/" class="prev">PREV</a><a href="/2023/12/03/elf-crackme-level1-0/" class="next">NEXT</a></div><div class="copyright"><p>© 2015 - 2024 <a href="http://tttturtle-russ.github.io">John Doe</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

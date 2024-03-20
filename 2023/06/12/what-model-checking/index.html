@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 什么是模型检测(Model Checking) · Hexo</title><meta name="description" content="什么是模型检测(Model Checking) - John Doe"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://tttturtle-russ.github.io/atom.xml" title="Hexo"><meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/sunchongsheng" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/pinggod" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/cv/" target="_self" class="nav-list-link">CV</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">什么是模型检测(Model Checking)</h1><div class="post-info">Jun 12, 2023</div><div class="post-content"><h2 id="模型检测的概念"><a href="#模型检测的概念" class="headerlink" title="模型检测的概念"></a>模型检测的概念</h2><blockquote>
+<p>[Clarke &amp; Emerson 1981]:<br>“Model checking is an <code>automated</code> technique that, given<br>a <code>finite-state</code> model of a system and a <code>logical property</code>,<br>systematically checks whether this property holds for<br>(a given initial state in) that model.”</p>
+</blockquote>
+<p>模型检测是一种自动化技术，给定系统的有限状态模型和逻辑属性，系统地检查该属性是否适用于该模型（给定的初始状态）。</p>
+<p>简单来说，对于一个模型M，和一个状态$ \phi  $，其中M是一个有限状态的模型，$ \phi $是一个状态量，模型检测的作用就是在有限的时间或者空间内，通过遍历这个模型的状态空间或是具有限定性质的状态图以确定系统是否满足给定的性质。</p>
+<ul>
+<li>若系统拥有这个状态，则系统通过验证。</li>
+<li>系统不满足这个状态，则验证失败，并提出一个 <code>反例（counterexample)</code>。</li>
+<li>若时间或空间超限，则认为这个这个系统是 <code>状态爆炸(state-explosive)</code>的。</li>
+</ul>
+<img title="" src="pic1.png" alt="" data-align="center">
+
+<h2 id="软件工程中的模型检测"><a href="#软件工程中的模型检测" class="headerlink" title="软件工程中的模型检测"></a>软件工程中的模型检测</h2><p>软件工程中的模型检测主要作用是检测软件系统是否满足某些特定的属性或特点，对于一个典型的模型检测过程主要有如下四步：</p>
+<ul>
+<li>为被验证的系统构建模型<br>通常是通过高级语言的源程序自动生成一个抽象模型（Tool: modex from spinroot），我们也可以自己手动生成模型。</li>
+<li>定义系统应满足的条件<br>模型检查器(model checker)检查一个模型是否具有某些特定的属性，比如函数功能正确性，安全性，生命周期等等。通常属性需要用一些形式化语言（比如 <code>LTL（线性时间逻辑)，CTL（计算树逻辑)</code>)来显式定义有些属性也可以通过系统的行为推断出来，例如，公平性属性可以是隐式的，与系统中资源的分配方式有关。</li>
+<li>执行模型检测<br>通常一个模型检测算法会遍历模型的状态空间直到状态空间遍历完毕或者提出了一个反例，这个算法很好理解，当一个模型M的状态空间被遍历完了之后，已经没有必要继续遍历了，算法自然结束；如果提出了一个反例，则说明系统不满这个状态，也就没有继续下去的必要了。<br>当前主要有两种模型检测算法：<code>DFS（深度优先搜索)</code>和 <code>BFS（广度优先搜索)。</code></li>
+<li>生成结果<br>对应的，一个模型检测器会生成以下三种结果：<ul>
+<li><code>Satisfied</code>，模型M满足状态$\phi$。</li>
+<li><code>UnSatified</code>，已检测到的某些状态和$\phi$冲突，反例被抛出，则认为模型不满足性质。‘</li>
+<li><code>Unfinished</code>，检测过程由于状态空间爆炸问题终止。</li>
+</ul>
+</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/2023/07/23/Spin-Introduction/" class="prev">PREV</a></div><div class="copyright"><p>© 2015 - 2024 <a href="http://tttturtle-russ.github.io">John Doe</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

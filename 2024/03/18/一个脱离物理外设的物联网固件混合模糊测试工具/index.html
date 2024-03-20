@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 一个脱离物理外设的物联网固件混合模糊测试工具 · Hexo</title><meta name="description" content="一个脱离物理外设的物联网固件混合模糊测试工具 - John Doe"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://tttturtle-russ.github.io/atom.xml" title="Hexo"><meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/sunchongsheng" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/pinggod" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/cv/" target="_self" class="nav-list-link">CV</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">一个脱离物理外设的物联网固件混合模糊测试工具</h1><div class="post-info">Mar 18, 2024</div><div class="post-content"><h1 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h1><p>本文是对论文<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/10214030/">Physical Devices-Agnostic Hybrid Fuzzing of IoT Firmware</a>的读书笔记</p>
+<ul>
+<li><p>Background:</p>
+<p>   随着物联网设备的普及，其安全性变得愈发受人关注，其中一个重要方面就是固件安全，而fuzzing作为一个有效的漏洞检测技术，在IoT固件的安全测试中扮演着重要角色。但是要将fuzzing应用到IoT固件时，有如下几个问题：</p>
+<ul>
+<li>缺少实际外设时无法正常运行</li>
+<li>缺乏对多外设输入空间的探索</li>
+<li>仪器化和收集反馈的困难</li>
+<li>缺乏故障检测方法</li>
+</ul>
+</li>
+<li><p>Method:</p>
+<p>  文章针对如上问题，提出了一种新颖的fuzzing测试工具: FirmHybirdFuzzer。该工具具有如下特点：</p>
+<ul>
+<li><strong>统一虚拟外设</strong>：集成虚拟外设，FirmHybirdFuzzer可以在没有实际硬件的情况下运行固件</li>
+<li><strong>混合事件生成</strong>：采用混合事件生成方法为不同的外设生成测试输入</li>
+<li><strong>两级覆盖反馈</strong>：通过收集覆盖反馈，工具能够优化测试用例的生成过程。</li>
+<li><strong>插件化故障检测</strong>: 实现了基于插件的故障检测机制，专注于发现内存损坏等典型漏洞。</li>
+</ul>
+</li>
+<li><p>Evaluation:</p>
+<ol>
+<li><strong>虚拟外围设备的有效性</strong>：<ul>
+<li>测试了62个固件图像，结果显示，不同的固件图像能够在系统中成功执行，而无需实际的外围设备。</li>
+</ul>
+</li>
+<li><strong>混合事件生成的有效性和效率</strong>：<ul>
+<li>通过变异不同的外围设备，发现同时变异上下文和网络能够获得更高的代码覆盖率。</li>
+<li>通过不同事件生成调度策略的评估，发现使用变异生成能够提高覆盖率并减少时间开销。</li>
+</ul>
+</li>
+<li><strong>故障检测插件的有效性和性能</strong>：<ul>
+<li>故障检测机制能够有效地识别常见的C&#x2F;C++漏洞。</li>
+<li>栈跟踪能够检测栈溢出和越界读写错误；堆跟踪能够识别堆溢出、空指针解引用、双重释放和使用后释放；指令跟踪能够检测除以零和整数溢出漏洞。</li>
+<li>故障检测插件在可接受的额外时间开销下有效。</li>
+</ul>
+</li>
+<li><strong>与其他固件模糊测试工具的比较</strong>：<ul>
+<li>FirmHybirdFuzzer在硬件独立性、源代码独立性和支持的固件类型方面具有明显的优势。</li>
+<li>与Laelaps相比，FirmHybirdFuzzer在基本块覆盖和外围设备访问点覆盖方面都有显著提升，并且所需时间大幅减少。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h2><p>物联网固件的一些特性不同于传统的桌面应用和移动应用，比如<strong>不同的底层环境和基于外设的交互。</strong>这些特性给基于fuzzing的漏洞检测带来了很多新的问题。</p>
+<ul>
+<li><p>缺少实际外设时无法正常运行:</p>
+<p>  由于底层操作系统和外设的不同，要将固件运行起来是很困难的。目前有种基于QEMU的动态分析方法，其内置了一个Linux内核的抽象用于模拟固件，这种方法常用于基于LInux的固件动态分析。但是这种方法并不适用于动态分析运行在实时操作系统或裸机上的微控固件，原因是RTOS种类众多且互相不兼容，并且主流的模拟器如QEMU，只能模拟微控的核心外设，当分析未知外设时QEMU就会失效。也有一些方法使用符号执行等技术来模拟未知外设的工作流，如SymDrive，Laelaps，包括提供通用库函数来实现固件分析的HALUcinator，但他们都具有一定的局限性。</p>
+</li>
+<li><p>不支持多外设输入空间的探索</p>
+<p>  IoT固件运行的设备通过不同的外设与环境进行交互，然而主流的fuzzing方法所处理的程序环境接口通常只有单个输入，如Sulley,Peach,AFL++等等。而IoT固件通常有多个输入，如传感器，网络设备等等，并且不同的输入可能由于外设的不同，导致其语法，类型等都不同，而目前还没有一个已知的fuzzing工具可以有效地处理这个问题。</p>
+</li>
+<li><p>无法仪器化和收集反馈用于引导fuzzing</p>
+<p>  通常灰盒fuzzing的关键在于<strong>基于反馈的引导</strong>和<strong>遗传优化，</strong>对于x86软件来说将编译时和运行时仪器化来收集执行输入的覆盖率信息然后用于引导fuzzing优化输入是当前最好的方法。然而，编译时的仪器化需要源码，而对于IoT固件来说通常没有源码。传统的fuzzing方法依赖于观测运行时的崩溃，通常是软件测试或硬件保护触发的崩溃，但是在微控器上这种方法有很多限制，导致很多崩溃发生但并未报告。</p>
+</li>
+</ul>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>为了解决上述问题，文章提出了一个不依赖物理设备的混合模糊测试工具，其可以测试主流的逻辑资源和RTOS而不需要外设，并且能检测常见的C&#x2F;C++漏洞，其针对上述的挑战提出了三个解决方案：</p>
+<ul>
+<li>集成虚拟外设组件</li>
+<li>采用混合事件生成方法用于为不同的外设生成输入</li>
+<li>二级覆盖率反馈机制用于生成测试集</li>
+</ul>
+<h1 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h1><p>工具的主体框架如图所示</p>
+<p><img src="/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/Untitled.png" alt="Untitled"></p>
+<p>框架的输入包括固件的二进制文件和fuzzing配置（核心文件，ROM&#x2F;RAM位置和fuzzing设置等），框架的输出是一个发掘出的漏洞。不同于传统的fuzz工具要么检测用户空间要么检测内核空间，FirmHybridFuzzer同时用户空间程序和内核空间程序。该方法的主要技术有如下几点：</p>
+<ul>
+<li>Symbolic peripheral-based Execution 基于外设的符号执行技术，用于模拟外设的行为。</li>
+<li>Hybrid Event Generation 混合事件生成器，基于约束和突变为不同外设生成不同输入</li>
+<li>Multi Feedback Guidance 多反馈引导，用于优化测试输入</li>
+<li>Fault Detection Mechanism 故障检测机制，检测常见的漏洞</li>
+</ul>
+<h3 id="虚拟外设执行"><a href="#虚拟外设执行" class="headerlink" title="虚拟外设执行"></a><strong>虚拟外设执行</strong></h3><p>文章提出了一个统一的符号化的外设对不同外设的行为进行建模，固件中所有IO操作均被截获并转发到这个符号化的外设中，虚拟外设将基于对外设行为的模拟能力做出相应回复。同时虚拟外设还对不同未知外设建立了三种关键行为模型：</p>
+<ul>
+<li><strong>外设发现</strong>：当处理器通过DMA(Direct Memory Access)访问到一块未知的内存时，该内存区域对应的外设即会做出响应。</li>
+<li><strong>I&#x2F;O 交互</strong>：通过与外设的读操作进行交互并提供有效&#x2F;无效的响应，固件可以执行有效的执行路径。其中写操作都是被忽略的因为其不会对控制流产生影响。</li>
+<li><strong>中断注入</strong>：基于QEMU的机器协议，作者设计了三个QMP命令（activate irqs, inject irq，inject all irqs）并且实现了python接口用于随机注入中断指令。要注意的是注入的中断指令不会被当作fuzzing的输入，我认为这是为了更加接近真实环境所做的行为。</li>
+</ul>
+<p>虚拟外设通常会产生有效范围以外的值，作者认为这是可接受的，因为这有利于探索错误处理代码段中的漏洞，我认为这也同时可以增加控制流数量，可能会增加状态空间的大小但是有利于全面的探索。</p>
+<h3 id="混合事件生成"><a href="#混合事件生成" class="headerlink" title="混合事件生成"></a>混合事件生成</h3><p>混合事件生成器由两个部分组成：基于约束生成和基于突变生成。该方法解决了传统灰盒模糊测试无法对多外设生成有效输入的问题。</p>
+<ul>
+<li><p><strong>基于约束生成</strong>：该方法使用一个符号执行引擎生成外设的输入，当固件执行到一个未知外设的内存区域时，QEMU会暂时挂起，将内存和寄存器信息输入到符号执行引擎中，引擎会输出几条可能的路径，然后根据启发式路径选择策略选择路径并调用SMT进行约束求解来生成对应的输入，并将其存储在对应的外设种子队列中。下面时该方法的几个关键技术</p>
+<ul>
+<li>基于访问的符号化：顾名思义，每次访问外设或变量都会分配一个新的符号给它，即使之前访问并分配过这个外设或变量。这样做的目的是为了防止外设内存的不确定性造成错误的后果，如下图所示，如果base没有每次都被符号化，那么<code>cnt1 - cnt0</code>将始终为0.</li>
+</ul>
+<p>  <img src="/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/image2.png" alt="Untitled"></p>
+<ul>
+<li>推断式符号执行：采用该技术是为了减少约束求解器调用，该技术要求符号执行引擎积累到一定程度的分支才能调用约束求解器，同时指定三条规则进行路径选择。<ul>
+<li>优先深层路径</li>
+<li>优先新发现的路径</li>
+<li>避免无穷循环</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>基于突变生成</strong>：当固件执行到某个外设要进行读操作时，当前已存在的种子将会发生突变，突变产生的新事件将会加入到种子队列中然后喂入QEMU来继续执行。下面是该方法的几个关键技术</p>
+<ul>
+<li>外设感知的有效种子生成：初始的种子通常需要符合外设的要求，比如语法和语义正确，这将为之后的突变提供更好的基础。</li>
+<li>特定外设的突变能力：考虑到外设交互的特点，设计了一系列特定的突变算子如下：<ul>
+<li>BitFlip：翻转已有种子的1,4,8,16,32,64,128位</li>
+<li>Arithmetic：在已有种子加或减上一个随机值</li>
+<li>Interesting：在种子中插入一些有趣的值，例如条件表达式中使用的固定值。</li>
+<li>Overwriting：通过固定内容(例如,头部)在协议的特定字段上覆盖现有种子的某些块。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>基于概率调度：一般来说，基于约束的生成擅长生成事件来驱动固件沿着特定的路径执行。突变型代在生成探索更多路径的多样化事件方面具有优势，包括错误处理代码。作者在这里 的建议是在程序初期使用基于约束生成方法，当外设的种子序列长度大于人工指定的限制，则使用基于概率调度算法调整生成方法。注意这个概率是人工指定的。</p>
+</li>
+</ul>
+<h3 id="二级反馈引导"><a href="#二级反馈引导" class="headerlink" title="二级反馈引导"></a>二级反馈引导</h3><p>该方法利用QEMU来实现，由于固件是由QEMU翻译过来，根据QEMU的中间层可以很容易获取运行时信息。这构成了方法动态收集反馈信息的基础，包括已执行的基本块，访问的外设接入点等。同时使用多维度覆盖反馈，针对块到块和外设到外设两个维度。</p>
+<ul>
+<li>BB2BB覆盖率：BB2BB是指一个外设中的代码块跳转到另一个代码块，在运行时追踪每一个独特的BB2BB操作并将其数量作为FICFG覆盖率的参考。如果一个事件触发了一个新的BB2BB，则认为这个事件是有趣的并将其突变生成更多的种子。</li>
+<li>PP2PP覆盖率：BB2BB是指一个外设跳转到另一个外设，在运行时跟踪所有唯一的PP2PP，因为它是显示FPADG覆盖率的直接度量。所有访问的唯一的PP2PP存储在一个列表中。该列表作为PP2PP的覆盖图。如果一个事件触发了一个新的PP2PP，则认为这个事件是有趣的并将其突变生成更多的种子。</li>
+</ul>
+<p>混合事件生成和二级反馈引导的结合算法如下所示<br><img src="/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/image.png"></p>
+<h3 id="故障检测机制"><a href="#故障检测机制" class="headerlink" title="故障检测机制"></a>故障检测机制</h3><p>该方法借鉴PANDA中用于检测内存损坏的启发式方法，实现了一种基于微控制器的固件故障检测机制。由于最新的QEMU对基于ARM CortexM的设备具有更好的模拟能力，作者将PANDA机制移植到最新的QEMU中，并对其进行扩展，以支持检测更多的漏洞。更具体地说，设计并实现了3个跟踪插件作为故障检测机制中的QEMU TCG插件。</p>
+<ul>
+<li>栈跟踪</li>
+<li>堆跟踪</li>
+<li>指令跟踪</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/2024/03/20/MacMini%E6%8B%AF%E6%95%91%E8%AE%A1%E5%88%92-2-Stable-Diffusion/" class="prev">PREV</a><a href="/2024/03/17/MacOS-%E6%8B%AF%E6%95%91%E8%AE%A1%E5%88%92-1-%E6%97%81%E8%B7%AF%E7%94%B1/" class="next">NEXT</a></div><div class="copyright"><p>© 2015 - 2024 <a href="http://tttturtle-russ.github.io">John Doe</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

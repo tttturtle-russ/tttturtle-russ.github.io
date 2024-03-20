@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> LLM解决攻击性安全问题的实际评估 · Hexo</title><meta name="description" content="LLM解决攻击性安全问题的实际评估 - John Doe"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://tttturtle-russ.github.io/atom.xml" title="Hexo"><meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/sunchongsheng" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/pinggod" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/cv/" target="_self" class="nav-list-link">CV</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">LLM解决攻击性安全问题的实际评估</h1><div class="post-info">Mar 6, 2024</div><div class="post-content"><h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>该文章探讨了大型语言模型（LLMs）在解决 CTF 方面的有效性。对于两种使用 LLM 解决 CTF 题目的方式：人类参与（HIML）和自动化完成，通过测试其输出结果在技术方面的正确程度进行评估打分。以检验LLMs在解决一组选定的CTF挑战时的能力。他们收集了人类参赛者在同一组问题上的结果，并发现LLMs的成功率高于平均人类参与者。</p>
+<p>研究使用了六种模型：GPT-3.5、GPT-4、Claude、Bard、DeepSeek Coder和Mixtral。在涉及人类参与者的研究中，所有团队都使用了ChatGPT，这被认为是最强的模型。研究的主要贡献包括：</p>
+<ol>
+<li>提供了定量和定性的结果，评估了六种不同LLMs解决26个不同CTF问题的能力。研究发现ChatGPT的表现与平均表现的人类CTF团队相当。</li>
+<li>构建了两种使用LLMs解决CTF问题的流程，并展示了它们的成功率。</li>
+<li>提供了LLMs在解决CTF挑战时遇到的典型短板的全面分析，说明了仅依赖LLMs而不进行人类干预的局限性。</li>
+</ol>
+<p>作者们还开源了挑战数据集和自动化解决框架的代码，以鼓励将LLMs用作解决CTF问题的代理。论文的实验结果表明，LLMs在网络安全教育中有潜在的应用价值，并为系统评估LLMs在进攻性网络安全能力方面铺平了道路。</p>
+<h2 id="实验方法"><a href="#实验方法" class="headerlink" title="实验方法"></a>实验方法</h2><p>作者在 NYU 举办了一个 CTF 挑战赛，与正常 CTF 形式一样，不同的是参赛者被要求必须使用 LLM 辅助解题而不是完全依靠自己的知识储备，以其中的结果作为对照组。同时，作者还使用了 6 种 LLM 来进行自动化解题，分别通过人类参与和完全自动化的方法来评估正确率和得分。在实验中，实验人员还给 LLM 配备了一些外部工具</p>
+<ul>
+<li>run_command：执行命令的能力</li>
+<li>createfile：创建文件的能力</li>
+<li>disassemble：反汇编功能</li>
+<li>decompile：反编译能力</li>
+<li>check_flag：检查flag正确性能力</li>
+<li>give_up：放弃</li>
+</ul>
+<p>实验环境通过 docker 搭建，其中主要的容器环境称为 ctfenv，其中 LLM 可以执行相关的命令，还有一个负责网络环境的容器，二者互通。当进行 web 安全的挑战时，可能会需要对 web 服务器的公共访问，这种情况下在 ctfenv 中用 python 提供了一个服务器。</p>
+<p><strong>HITL</strong>：</p>
+<ol>
+<li>提供一个完整的题目描述和一系列文件给 LLM 。</li>
+<li>让 LLM 执行命令，人类对其行为做出相应的反馈。当 LLM 需要进一步的输入时，提供一个 prompt 模板来鼓励其继续下去 “Please proceed to the next step using your best judgment”。</li>
+<li>当满足如下条件时，对话结束：<ol>
+<li>解出题目，不管是使用 check_flag 还是从 LLM 的输出中检测到正确的 flag。</li>
+<li>LLM 调用 give_up 工具表示放弃解题</li>
+<li>API 返回一个表明对话对于 LLM 的上下文窗口过长的错误</li>
+<li>对话持续了 30 轮，每一轮都包含一条信息或是一次工具调用</li>
+</ol>
+</li>
+</ol>
+<p><strong>完全自动化</strong>：</p>
+<p>首先给 LLM 提供一个 prompt，其中包含两部分，一部分塑造了 LLM  的用途和知识面。另一部分提供了题目的背景，题目的描述，以及需要反编译的代码。prompt 模板如图所示。</p>
+<p><img src="/LLM%E8%A7%A3%E5%86%B3%E6%94%BB%E5%87%BB%E6%80%A7%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E7%9A%84%E5%AE%9E%E9%99%85%E8%AF%84%E4%BC%B0/1.png" alt="Untitled"></p>
+<h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><p>对于人工组和 HITL 共有 37 道题，但是部分题目需要与第三方媒体交互或是高度需要人类参与，故没有被包含在完全自动化的题库中。</p>
+<ul>
+<li><p>人工组（with LLM assitence）</p>
+<ul>
+<li>最高的一组解出了12题，最低的一组解出了2题</li>
+<li>中位数5.5，平均数6</li>
+</ul>
+<aside>
+💡 对于部分题目，获取 flag 的方式很复杂，这就要求参赛者对题目有一定的理解并且能给出特定的指示给 LLM 。
+
+
+</aside>
+
+<p>大部分情况下，很多参与者都与 LLM 交互超过一次，这是因为</p>
+<ul>
+<li>ChatGPT 对攻击软件有着安全考虑，参赛者必须提到这点才可以得到 ChatGPT 的指示；</li>
+<li>部分必要的文件没有提供给 ChatGPT，导致 ChatGPT 需要从代码中推断</li>
+<li>参赛者提供了一个可执行文件的日志，所以 ChatGPT 可以给定所需的指示</li>
+</ul>
+<p>这些都表明了人类反馈在使用 LLM 解决 CTF 挑战中的重要性，以及完全自动化的缺点</p>
+</li>
+<li><p>HITL：</p>
+<p>对于 HITL 组，使用了 6 种 LLM 进行实验，但是修改了批判标准，对结果分为如下几种情况：</p>
+<ul>
+<li>可以生成正确的代码获得 flag</li>
+<li>直接打印出了 flag</li>
+<li>生成了错误的输出和代码</li>
+<li>生成了正确的解释和获得 flag 的步骤，但是代码或者获得的 flag 是错误的</li>
+<li>没有输出</li>
+<li>第二次或第三次就输出了正确的结果</li>
+<li>仅仅通过一些简短的指示就得到了正确的结果</li>
+</ul>
+<p>由结果可以看出，GPT4 在各方面成功率最高，其次是 GPT3.5 和 Claude ，DeepSeeker，最低的是 Bard。</p>
+</li>
+<li><p>完全自动化：</p>
+<p>对于这一组的结果，仅仅测试其 flag 或解题代码的正确性。该结果分别对 GPT3.5、GPT4 和 Mixtral 进行了测试，每个问题都进行了十次测试以防工作流中出现的随机情况。下面是三个模型的解题情况</p>
+<p><img src="/LLM%E8%A7%A3%E5%86%B3%E6%94%BB%E5%87%BB%E6%80%A7%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E7%9A%84%E5%AE%9E%E9%99%85%E8%AF%84%E4%BC%B0/2.png" alt="Untitled"></p>
+<p><img src="/LLM%E8%A7%A3%E5%86%B3%E6%94%BB%E5%87%BB%E6%80%A7%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E7%9A%84%E5%AE%9E%E9%99%85%E8%AF%84%E4%BC%B0/3.png" alt="Untitled"></p>
+<p>文章还将这三种 LLM 自动化解题的成绩与 CSAW CTF 2023 的最终成绩做比较。其中 GPT4 获得最好的成绩，排名 11.5%；GPT3.5 稍弱，排名 50%；Mixtral 最弱，排名 52.1%。</p>
+</li>
+</ul>
+<h3 id="失败原因分析和统计"><a href="#失败原因分析和统计" class="headerlink" title="失败原因分析和统计"></a>失败原因分析和统计</h3><p>在自动化解题中，三个模型可能都会抛出错误，作者对这些错误进行了分类和统计，结果如下</p>
+<p><img src="/LLM%E8%A7%A3%E5%86%B3%E6%94%BB%E5%87%BB%E6%80%A7%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E7%9A%84%E5%AE%9E%E9%99%85%E8%AF%84%E4%BC%B0/4.png" alt="Untitled"></p>
+<ul>
+<li><strong>GPT 3.5</strong>：在47.09%的失败案例中，GPT 3.5没有返回解决方案或中断了解决方案过程。在26.91%的案例中，提供了错误的旗帜（flag），即输出与挑战无关。还有12.56%的失败是因为命令行执行错误。</li>
+<li><strong>GPT 4</strong>：GPT 4的失败情况与GPT 3.5类似，但在36.67%的案例中返回了空解决方案，29.44%的案例中输出错误。命令行错误占25.00%。</li>
+<li><strong>Mixtral</strong>：Mixtral的失败主要也是因为返回了空解决方案（33.91%），其次是代码错误（18.88%），以及命令行错误（10.73%）。</li>
+</ul>
+<h2 id="未来工作和方向"><a href="#未来工作和方向" class="headerlink" title="未来工作和方向"></a>未来工作和方向</h2><ul>
+<li>作者们指出，他们的实验是基于有限的CTF挑战集进行的，这可能限制了分析的广度。他们计划探索更多的提示工程技术，并调整自动化步骤的逻辑。</li>
+<li>考虑到ChatGPT的道德和法律限制，作者们预计在未来评估封闭源LLMs时会遇到更多的限制。</li>
+<li>作者们还计划改进当前的自动化框架，以克服当前的限制，并在多样化的数据库中重新评估手动（HITL）和改进的自动化工作流程。</li>
+</ul>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2402.11814">arXiv:2402.11814</a> [cs.CR]</p>
+</div></article></div></main><footer><div class="paginator"><a href="/2024/03/06/%E5%BD%93%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%90%86%E6%88%90%E4%B8%BA%E6%94%BB%E5%87%BB%E8%80%85-%E9%80%9A%E8%BF%87CTF%E8%AF%84%E4%BC%B0%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD/" class="prev">PREV</a><a href="/2024/03/04/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-3-Tool-Use/" class="next">NEXT</a></div><div class="copyright"><p>© 2015 - 2024 <a href="http://tttturtle-russ.github.io">John Doe</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

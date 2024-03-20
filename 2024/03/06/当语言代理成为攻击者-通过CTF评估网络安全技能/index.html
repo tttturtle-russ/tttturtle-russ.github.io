@@ -1,0 +1,35 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 当语言代理成为攻击者: 通过CTF评估网络安全技能 · Hexo</title><meta name="description" content="当语言代理成为攻击者: 通过CTF评估网络安全技能 - John Doe"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://tttturtle-russ.github.io/atom.xml" title="Hexo"><meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/sunchongsheng" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/pinggod" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/cv/" target="_self" class="nav-list-link">CV</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">当语言代理成为攻击者: 通过CTF评估网络安全技能</h1><div class="post-info">Mar 6, 2024</div><div class="post-content"><h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>文章探讨了语言模型（LMs）在网络安全领域的潜力和挑战，特别是在自动化和增强数字工作方面。随着LMs在计算效率和执行速度方面的显著提升，它们在定位漏洞、执行复杂社会工程和黑客攻击方面可能表现出极高的能力。为了理解和指导LMs在网络安全领域的发展，作者们提出了InterCode-CTF，这是一个新颖的任务环境和基准测试，用于评估语言代理在Capture the Flag（CTF）任务上的表现。作者们手动收集并验证了100个任务实例，这些实例要求使用这些网络安全技能，并在这些实例上评估了当前顶尖的LMs。</p>
+<h2 id="Inter-Code-CTF"><a href="#Inter-Code-CTF" class="headerlink" title="Inter-Code CTF"></a>Inter-Code CTF</h2><p>文章介绍了 Inter-Code CTF 中的任务定义，如何配置 Inter-Code CTF 代码环境以及任务套件的构建。</p>
+<h3 id="Task-Definition"><a href="#Task-Definition" class="headerlink" title="Task Definition"></a>Task Definition</h3><p>Inter-Code CTF 定义的任务很像现实世界中的“危险的” CTF 问题，遵循了<a target="_blank" rel="noopener" href="https://api.semanticscholar.org/CorpusID:259262186">一种互动式编程任务的构建方法</a>。给定任务的自然语言描述以及一些必须的资源（二进制文件&#x2F;文字&#x2F;图片等），要求代理进行问题的求解，代理通过和 shell 交互来进行每一轮的行为，可以是 command 也可以是 python script。</p>
+<h3 id="Task-Environment"><a href="#Task-Environment" class="headerlink" title="Task Environment"></a>Task Environment</h3><p>为了保证安全和可重复执行，作者使用 Docker 搭建沙盒环境，InterCode - CTF自动解析代理生成的Python或Bash代码，处理执行，并返回标准输出作为观察。</p>
+<h3 id="Task-Suite"><a href="#Task-Suite" class="headerlink" title="Task Suite"></a>Task Suite</h3><p>在任务数据集的构造中，作者首先在 PicoCTF 上收集了题目，然后进行如下三个步骤：</p>
+<ol>
+<li><strong>完成PicoCTF问题</strong>：首先，作者们在PicoCTF的网络平台上尝试完成一个问题。如果成功，他们就会继续下一步</li>
+<li><strong>在InterCode-CTF中重建任务设置</strong>：<ul>
+<li>将与任务相关的数字资产（如代码、图像、文本文件）存储到特定于任务实例的目录中。</li>
+<li>如果需要，向Dockerfile定义中添加必要的依赖项。这个Dockerfile定义在文章的第3.1节中已经建立。</li>
+</ul>
+</li>
+<li><strong>验证任务实例的可行性</strong>：为了确保任务实例对代理来说是可行的，作者们在InterCode-CTF的Docker环境中手动重新完成任务。</li>
+</ol>
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>作者主要对 GPT4 模型进行了实验，GPT4 完成了 100 个任务中的 40 个，结果分布如下所示</p>
+<p><img src="/%E5%BD%93%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%90%86%E6%88%90%E4%B8%BA%E6%94%BB%E5%87%BB%E8%80%85-%E9%80%9A%E8%BF%87CTF%E8%AF%84%E4%BC%B0%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD/1.png" alt="Untitled"></p>
+<p>GPT4 的解题速度平均在 3.9 轮，也就是说，每 3.9 轮就能解出一个 flag。</p>
+<p>作者还根据结果，提出了 GPT4 的优缺点：</p>
+<ol>
+<li><strong>复杂任务的挑战</strong>：GPT-4在处理需要多步骤和专业知识的复杂网络安全任务时遇到困难。尽管它能够解决一些基础的通用技能任务，但在更专业的领域，如逆向工程、密码学、二进制利用和网络利用方面，它的性能有所下降。</li>
+<li><strong>任务解决策略的单一性</strong>：GPT-4在解决任务时表现出的策略较为单一，它通常在3-4个回合内解决问题，但在需要更多回合的任务上表现不佳。这表明GPT-4在处理需要多步骤逻辑和策略调整的任务时存在局限性。</li>
+<li>速度相比人类快得多：作者平均每题要花费3.5分钟，部分需要 debug 的题目可能要花到 15 分钟，但是 GPT4 平均每个任务只需要 30 秒。对于需要复杂代码的解法，GPT4 也可以用远短于人类的时间生成代码。</li>
+</ol>
+<h2 id="限制和未来可能的工作"><a href="#限制和未来可能的工作" class="headerlink" title="限制和未来可能的工作"></a>限制和未来可能的工作</h2><ol>
+<li><strong>手动任务创建过程</strong>：构建InterCode-CTF任务套件是一个手动过程，需要专家级别的人类进行每个任务实例的验证。这个过程耗时且劳动密集，限制了任务套件的扩展和多样性。</li>
+<li><strong>任务环境的扩展性</strong>：当前的InterCode-CTF Docker环境基于Docker，虽然为任务提供了一个安全和可复现的执行环境，但它的功能有限。例如，它缺乏浏览器功能，这限制了能够重现的网络利用任务类型。</li>
+<li><strong>计算资源和时间限制</strong>：评估更多模型和推理框架需要更多的计算资源和时间。作者们提到，他们希望在未来能够利用更多的资源来评估更多的模型，以获得更全面的评估结果。</li>
+<li><strong>任务套件的增长</strong>：作者们希望继续扩大InterCode-CTF任务套件的规模，以包含更多类型的网络安全任务。这可能需要开发自动化程序来减少人类在任务创建中的参与。</li>
+<li><strong>工具增强的设置或代理</strong>：作者们提到，通过增加工具和能力，可以扩展InterCode-CTF的任务环境，使其能够覆盖更多样化的CTF任务。这可能包括添加浏览网页的能力，以便代理能够完成更多类型的网络利用任务。</li>
+</ol>
+<blockquote>
+<p>开源网址<a target="_blank" rel="noopener" href="https://github.com/intercode-benchmark/intercode-benchmark">intercode-benchmark</a>现在似乎已经迁移到了<a target="_blank" rel="noopener" href="https://github.com/princeton-nlp/intercode">intercode</a>这里，数据集在此<a target="_blank" rel="noopener" href="https://github.com/princeton-nlp/intercode/tree/master/data/ctf">Dataset</a></p>
+</blockquote>
+</div></article></div></main><footer><div class="paginator"><a href="/2024/03/11/Reproduce-of-intercode-CTF/" class="prev">PREV</a><a href="/2024/03/06/LLM%E8%A7%A3%E5%86%B3%E6%94%BB%E5%87%BB%E6%80%A7%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E7%9A%84%E5%AE%9E%E9%99%85%E8%AF%84%E4%BC%B0/" class="next">NEXT</a></div><div class="copyright"><p>© 2015 - 2024 <a href="http://tttturtle-russ.github.io">John Doe</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Spin和Promela简介 · Hexo</title><meta name="description" content="Spin和Promela简介 - John Doe"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://tttturtle-russ.github.io/atom.xml" title="Hexo"><meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/sunchongsheng" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/pinggod" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/cv/" target="_self" class="nav-list-link">CV</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Spin和Promela简介</h1><div class="post-info">Jul 23, 2023</div><div class="post-content"><h1 id="SPIN-简介"><a href="#SPIN-简介" class="headerlink" title="SPIN 简介"></a>SPIN 简介</h1><p>SPIN(Simple Promela Interpreter)是一个用于分析并发系统逻辑一致性的工具，尤其是数据通信协议（data communication protocols)。它充当Promela程序的解释器，并提供了模型检查功能。SPIN的主要任务是使用Promela模型探索系统的状态空间，以验证或验证系统是否满足指定的属性。SPIN可以检测到诸如死锁、活锁、不变性、通信问题等问题，这些问题在并发系统中可能非常复杂且难以手动验证。</p>
+<h1 id="Promela简介"><a href="#Promela简介" class="headerlink" title="Promela简介"></a>Promela简介</h1><ol>
+<li><p>Promela(Protocol&#x2F;Process Meta Language)，是一种用于描述并发系统和协议的形式规范语言。它是用于编写系统模型的高级语言，通常与模型检查工具SPIN一起使用。Promela的特点包括描述并发进程、通信通道、同步和异步事件等的能力。它的语法相对简单，但能够表达复杂的并发行为。Promela的设计目标是使系统的行为规范化，以便通过模型检查来验证系统是否满足某些属性。Promela的语法类似于C语言，同时具有CSP(Communicating Sequential Processes，通信顺序进程)的特征(进程组合，避免死锁等)。</p>
+</li>
+<li><p>一个Promela的模型主要包括以下几部分：</p>
+<ul>
+<li><p>类型声明(<code>type</code> declaraions)</p>
+</li>
+<li><p>信道声明(<code>channel</code> declarations)</p>
+</li>
+<li><p>变量声明(<code>variable</code> declarations</p>
+<blockquote>
+<p>要注意的是，promela中的变和C语言中变量的作用域并不相同，promela变量中定义域是一个进程。</p>
+</blockquote>
+</li>
+<li><p>进程声明(<code>process</code> declarations)</p>
+</li>
+<li><p><code>init</code>进程(程序的入口，相当于C语言中的main函数)</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="Promela中的进程"><a href="#Promela中的进程" class="headerlink" title="Promela中的进程"></a>Promela中的进程</h3><p>进程由 <code>proctype</code>定义，每一个进程之间互不影响，独立执行，互相之间也不影响执行效率。进程之间的通信通常通过全局变量(<code>global variables</code>)或是信道(<code>channels</code>)。 一个进程通常由以下几部分组成</p>
+<ul>
+<li>进程名</li>
+<li>形式化参数</li>
+<li>局部变量声明</li>
+<li>主体</li>
+</ul>
+<p>下图为一个进程的示意图</p>
+<img src="pic1.png" data-align="center" >
+下面为Promela的HelloWorld代码示例
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">active proctype <span class="title function_">Hello</span><span class="params">()</span> &#123; </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello World ,Hello pid is %d\n&quot;</span>,_pid);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">init&#123;</span><br><span class="line">    <span class="type">int</span> lpid;</span><br><span class="line">    lpid = run Hello();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello World ,in main process  pid is %d\n&quot;</span>,lpid);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>promela中的<code>active</code>关键字相当于golang语言中的init函数，根据官方文档给出的说明，用active修饰的proctype需要在状态机初始化状态下就运行，也就是说在init进程运行前被active修饰的进程就在运行了，故上述代码输出的结果如下图所示。</p>
+</blockquote>
+<img src="pic2.png" data-align="center">
+
+<h3 id="Promela中的变量和类型"><a href="#Promela中的变量和类型" class="headerlink" title="Promela中的变量和类型"></a>Promela中的变量和类型</h3><p>Promela中的变量类型和go语言差不多，共有8种类型，分别是</p>
+<ul>
+<li>bit $[0..1]$</li>
+<li>bool ${0,1}$</li>
+<li>byte $[0..255]$</li>
+<li>short $[-2^{16}-1,2^{16}-1]$</li>
+<li>int $[-2^{32}-1,2^{32}-1]$</li>
+<li>arrays</li>
+<li>structs 用typedef定义</li>
+<li>channels 进程之间用于通信的信道</li>
+</ul>
+<p>promela中的变量初值均为0,变量可以通过&#x3D;赋值，也可以通过传参赋值，也可以通过消息传递赋值。大部分C语言中变量支持的操作类型在Promela中都支持，包括移位操作。如下图所示。</p>
+<img src="pic3.png" data-align="center">
+
+<h3 id="Promela中的常见关键字"><a href="#Promela中的常见关键字" class="headerlink" title="Promela中的常见关键字"></a>Promela中的常见关键字</h3><ul>
+<li><p><code>run</code>：用于启动一个进程，比如例HelloWorld里面的Hello()进程就是用<code>run</code>启动的，就像调用函数一样。</p>
+</li>
+<li><p><code>assert</code>：用于断言，当<code>assert</code>后面的表达式为0值也就是false时，spin会立刻退出。</p>
+</li>
+<li><p><code>printf</code>：用于打印一些信息到标准输出。</p>
+</li>
+<li><p><code>skip</code>：<code>skip</code>被Spin解释器解释为常量1,也就是布尔量true,</p>
+</li>
+<li><p><code>if</code>：<code>if</code>语句在Promela中更像我们常见的switch语句，他的一般形式如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> </span><br><span class="line">:: cond1 -&gt; stats1...</span><br><span class="line">:: cond2 -&gt; stats2...</span><br><span class="line">:: cond3 -&gt; stats3...</span><br><span class="line">:: cond4 -&gt; stats4...</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>如果有多个cond语句均为真，则spin从其中随机抽取一个语句执行，如果所有的cond语句都不为真，则if语句阻塞。其中，<code>-&gt;</code>运算法相当于<code>;</code>，按照惯例，在<code>if</code>表达式中将cond和stats用<code>-&gt;</code>分隔。</p>
+</li>
+<li><p><code>else</code>：通常在<code>if</code>语句中，用于执行当所有cond都不满足时执行的stats,如下列所示：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span></span><br><span class="line">:: cond -&gt; stats...</span><br><span class="line">:: <span class="keyword">else</span> -&gt; other stats... <span class="comment">//当cond不满足时，if也不会阻塞而是执行other stats</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>do</code>：<code>do</code>语句在Promela中相当于golang语言中的select，他的选择策略与<code>if</code>语句一样，但是不会跳出语句，而是不断循环，重复选择,一般通过<code>break</code>跳出循环。他的一般形式如下：</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span></span><br><span class="line">:: cond1 -&gt; stats1...</span><br><span class="line">:: cond2 -&gt; stats2...</span><br><span class="line">:: cond3 -&gt; stats3...</span><br><span class="line">:: cond4 -&gt; stats4...</span><br><span class="line">od</span><br></pre></td></tr></table></figure>
+
+</div></article></div></main><footer><div class="paginator"><a href="/2023/09/09/mythril-ether-thief/" class="prev">PREV</a><a href="/2023/06/12/what-model-checking/" class="next">NEXT</a></div><div class="copyright"><p>© 2015 - 2024 <a href="http://tttturtle-russ.github.io">John Doe</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
