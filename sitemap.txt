@@ -18,7 +18,6 @@ http://tttturtle-russ.github.io/2024/03/20/MacMini%E6%8B%AF%E6%95%91%E8%AE%A1%E5
 http://tttturtle-russ.github.io/2024/03/06/LLM%E8%A7%A3%E5%86%B3%E6%94%BB%E5%87%BB%E6%80%A7%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E7%9A%84%E5%AE%9E%E9%99%85%E8%AF%84%E4%BC%B0/
 http://tttturtle-russ.github.io/2023/10/13/Injective-Agreement/
 http://tttturtle-russ.github.io/2024/03/13/1-Radare2-%E5%AE%89%E8%A3%85/
-http://tttturtle-russ.github.io/CV/index.html
 http://tttturtle-russ.github.io/google38f299af4fb8675e.html
 http://tttturtle-russ.github.io/
 http://tttturtle-russ.github.io/tags/Tools/
