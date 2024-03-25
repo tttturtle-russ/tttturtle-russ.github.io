@@ -2,9 +2,9 @@
 </head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="mailto://tttturtleruss@gmail.com" target="_self" class="nav-list-link">MAIL</a></li><li class="nav-list-item"><a href="https://github.com/tttturtle-russ" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/resume/" target="_self" class="nav-list-link">CV</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">pwn.hust.college - elf-crackme-level1.1</h1><div class="post-info">Dec 3, 2023</div><div class="post-content"><h1 id="Level1-1"><a href="#Level1-1" class="headerlink" title="Level1.1"></a>Level1.1</h1><h3 id="1-关卡目的：学习并理解程序头表"><a href="#1-关卡目的：学习并理解程序头表" class="headerlink" title="1.关卡目的：学习并理解程序头表"></a>1.关卡目的：学习并理解程序头表</h3><h3 id="2-步骤"><a href="#2-步骤" class="headerlink" title="2.步骤"></a>2.步骤</h3><ul>
 <li>使用hexedit查看elf文件内容，<code>hexedit elf-crackme-level1.1</code></li>
 </ul>
-<img src="./level1.1/step1.png" alt="step1"/>
+<img src="/2023/12/03/elf-crackme-level1-1/step1.png" alt="step1">
 
-<p> 发现从0x48-0x5F的值都是0xFF，很明显发现不正确。<br> 使用readelf查看elf程序头表，<code>readelf -l elf-crackme-level1.1</code>。<br><img src="./level1.1/step2.png" alt="step2"/></p>
+<p> 发现从0x48-0x5F的值都是0xFF，很明显发现不正确。<br> 使用readelf查看elf程序头表，<code>readelf -l elf-crackme-level1.1</code>。<br><img src="/2023/12/03/elf-crackme-level1-1/step2.png" alt="step2"></p>
 <ul>
 <li><p>从读取结果可以看出PHDR段的数据很明显不正确，通过计算，正确的值应当如下</p>
 <table>

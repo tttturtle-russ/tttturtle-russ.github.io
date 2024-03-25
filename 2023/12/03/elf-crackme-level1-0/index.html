@@ -2,7 +2,7 @@
 </head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="mailto://tttturtleruss@gmail.com" target="_self" class="nav-list-link">MAIL</a></li><li class="nav-list-item"><a href="https://github.com/tttturtle-russ" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/resume/" target="_self" class="nav-list-link">CV</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">pwn.hust.college - elf-crackme-level1.0</h1><div class="post-info">Dec 3, 2023</div><div class="post-content"><h1 id="Level-1-0"><a href="#Level-1-0" class="headerlink" title="Level 1.0"></a>Level 1.0</h1><h3 id="1-关卡目的-学习并理解-ELF-文件头"><a href="#1-关卡目的-学习并理解-ELF-文件头" class="headerlink" title="1.关卡目的:学习并理解 ELF 文件头"></a>1.关卡目的:学习并理解 ELF 文件头</h3><h3 id="2-步骤"><a href="#2-步骤" class="headerlink" title="2.步骤"></a>2.步骤</h3><ul>
 <li>使用hexedit查看elf文件头信息<code>hexedit elf-crackme-level1.0</code></li>
 </ul>
-<img src="./level1.0/step1.png" alt="step1"/>
+<img src="/2023/12/03/elf-crackme-level1-0/step1.png" alt="step1">
 
 <p> 分析可以得知前16字节，也就是<code>e_ident</code> 值没有问题，继续查看发现<code>e_type</code> 也没有问题，继续检查<code>e_machine</code> 的值，发现是03。</p>
 <ul>
@@ -11,7 +11,7 @@
 <li><p>再次查看<a target="_blank" rel="noopener" href="https://refspecs.linuxfoundation.org/elf/gabi4+/ch4.eheader.html">对应表</a>，选择AMD处理器的值3E填进去。</p>
 </li>
 </ul>
-<img src="./level1.0/result.png" alt="step2"/>
+<img src="/2023/12/03/elf-crackme-level1-0/result.png" alt="step2">
 
 <p> 可见二进制文件成功执行，得到flag</p>
 </div></article></div></main><footer><div class="paginator"><a href="/2024/03/04/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-1-Planning/" class="prev">PREV</a><a href="/2023/12/03/elf-crackme-level1-1/" class="next">NEXT</a></div><div class="copyright"><p>© 2022 - 2024 <a href="https://tttturtle-russ.github.io">RussTurtle0</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

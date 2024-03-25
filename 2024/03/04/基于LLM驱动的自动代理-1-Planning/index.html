@@ -4,7 +4,7 @@
 <ul>
 <li>规划器（ Planning ）</li>
 <li>记忆（ Memory ）</li>
-<li>工具调用 （ Tool Use ）<br><img src="/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-1-Planning/1.png"></li>
+<li>工具调用 （ Tool Use ）<br><img src="/2024/03/04/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-1-Planning/1.png"></li>
 </ul>
 <p>同时，本文还举出了三个LLM Powered Agent 实例：</p>
 <ul>
@@ -43,7 +43,7 @@
 </aside>
 
 <p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2303.11366">Reflxion</a> 是一个通过给代理配备动态记忆和自我反省能力从而提高模型推理能力的框架，Reflxion 有一个标准强化学习设置，其中动作空间的设置和 ReAct 一样，具体原理如图所示。</p>
-<p><img src="/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-1-Planning/2.png" alt="Untitled"></p>
+<p><img src="/2024/03/04/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-1-Planning/2.png" alt="Untitled"></p>
 <p>在每一个动作$a_i$之后，代理都会计算其启发值$h_i$并根据结果选择性的重置环境开始一个新的试验。对于这个启发式函数$h$，其作用是发现模型中的效率低下和虚构问题并及时停止。</p>
 <p>自我反思的具体创建是通过二元组实现的，每个二元组都是一个失败的轨迹和理想的反思构成，具体来说失败的轨迹就是尝试过的但失败的执行序列，理想的反思就是将来要执行的可能成功的执行序列。这些二元组被添加到代理的记忆中，作为上下文使用。</p>
 <p>回顾链（ <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2302.02676">Chian of Hindsight</a> ，CoH ）鼓励模型通过展现过去的一系列输出来改进现有输出，并且每个都具有反馈信息。人类的反馈信息使用一个集合$D_h&#x3D;{(x,y_i,r_i,z_i)}_{i&#x3D;1}^{n}$来表示，其中$x$表示一个prompt，每一个$y_i$都是模型提供的补全，$r_i$是人对$y_i$的评分，$z_i$则是相应的人类对回顾的反馈。假设集合中的$z_i$是从大到小排列的，则这个过程变成了一个有监督的微调过程，输入序列的形式为</p>
@@ -51,7 +51,7 @@
 <p>CoH 在训练过程中添加了正则化来控制模型过拟合问题，并且通过随机屏蔽过去的标记，预防捷径和复制行为的出现。</p>
 <p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2210.14215">Algorithm Distillation</a> 将该思想应用于强化学习的跨事件学习中，跨任务的执行序列这里我称之为$H$算法被封装在一个长期记忆政策里，这个方法的核心在于在每次代理和环境交互并且更加准确后，将学习历史喂入模型进行训练，目标和CoH不同的点在于训练模型而不是针对某个任务的训练。</p>
 <p>这个方法假设对于任何可以生成学习历史集合的算法，都可以通过对过去动作行为进行行为克隆将其“蒸馏”成一个神经网络。在每次训练中，该方法选择一个随机的任务和一个子序列$h\subseteq H$作为数据进行训练，这样一来训练过程便与任务本身无关。</p>
-<p><img src="/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-1-Planning/3.png" alt="Untitled"></p>
+<p><img src="/2024/03/04/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-1-Planning/3.png" alt="Untitled"></p>
 <p>实际上，模型的上下文长度是很短的，所以需要每个任务的序列足够短才能构建起一个多任务序列，而每个多任务至少需要2-4个任务才能达到几乎完美的上下文中的强化学习算法。</p>
 <p>在与ED（expert distillation），源策略，RL^2的比较中，AD的表现接近于RL^2，但训练速度远快于RL^2，此外，当使用源策略的部分训练历史作为条件时，AD的改进速度也比ED基准算法快得多。</p>
 <h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><p>Weng, Lilian. (Jun 2023). LLM-powered Autonomous Agents”. Lil’Log. <a target="_blank" rel="noopener" href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a>.</p>

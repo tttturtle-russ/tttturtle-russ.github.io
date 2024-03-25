@@ -63,7 +63,7 @@
 <li>二级覆盖率反馈机制用于生成测试集</li>
 </ul>
 <h1 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h1><p>工具的主体框架如图所示</p>
-<p><img src="/source/_posts/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/Untitled.png" alt="Untitled"></p>
+<p><img src="/2024/03/18/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/_posts/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/Untitled.png" alt="Untitled"></p>
 <p>框架的输入包括固件的二进制文件和fuzzing配置（核心文件，ROM&#x2F;RAM位置和fuzzing设置等），框架的输出是一个发掘出的漏洞。不同于传统的fuzz工具要么检测用户空间要么检测内核空间，FirmHybridFuzzer同时用户空间程序和内核空间程序。该方法的主要技术有如下几点：</p>
 <ul>
 <li>Symbolic peripheral-based Execution 基于外设的符号执行技术，用于模拟外设的行为。</li>
@@ -84,7 +84,7 @@
 <ul>
 <li>基于访问的符号化：顾名思义，每次访问外设或变量都会分配一个新的符号给它，即使之前访问并分配过这个外设或变量。这样做的目的是为了防止外设内存的不确定性造成错误的后果，如下图所示，如果base没有每次都被符号化，那么<code>cnt1 - cnt0</code>将始终为0.</li>
 </ul>
-<p>  <img src="/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/image2.png" alt="Untitled"></p>
+<p>  <img src="/2024/03/18/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/image2.png" alt="Untitled"></p>
 <ul>
 <li>推断式符号执行：采用该技术是为了减少约束求解器调用，该技术要求符号执行引擎积累到一定程度的分支才能调用约束求解器，同时指定三条规则进行路径选择。<ul>
 <li>优先深层路径</li>
@@ -114,7 +114,7 @@
 <li>BB2BB覆盖率：BB2BB是指一个外设中的代码块跳转到另一个代码块，在运行时追踪每一个独特的BB2BB操作并将其数量作为FICFG覆盖率的参考。如果一个事件触发了一个新的BB2BB，则认为这个事件是有趣的并将其突变生成更多的种子。</li>
 <li>PP2PP覆盖率：BB2BB是指一个外设跳转到另一个外设，在运行时跟踪所有唯一的PP2PP，因为它是显示FPADG覆盖率的直接度量。所有访问的唯一的PP2PP存储在一个列表中。该列表作为PP2PP的覆盖图。如果一个事件触发了一个新的PP2PP，则认为这个事件是有趣的并将其突变生成更多的种子。</li>
 </ul>
-<p>混合事件生成和二级反馈引导的结合算法如下所示<br><img src="/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/image.png"></p>
+<p>混合事件生成和二级反馈引导的结合算法如下所示<br><img src="/2024/03/18/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/image.png"></p>
 <h3 id="故障检测机制"><a href="#故障检测机制" class="headerlink" title="故障检测机制"></a>故障检测机制</h3><p>该方法借鉴PANDA中用于检测内存损坏的启发式方法，实现了一种基于微控制器的固件故障检测机制。由于最新的QEMU对基于ARM CortexM的设备具有更好的模拟能力，作者将PANDA机制移植到最新的QEMU中，并对其进行扩展，以支持检测更多的漏洞。更具体地说，设计并实现了3个跟踪插件作为故障检测机制中的QEMU TCG插件。</p>
 <ul>
 <li>栈跟踪</li>

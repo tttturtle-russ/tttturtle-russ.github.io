@@ -29,7 +29,7 @@
 <li>主体</li>
 </ul>
 <p>下图为一个进程的示意图</p>
-<img src="pic1.png" data-align="center" >
+<img src="/2023/07/23/Spin-Introduction/pic1.png" data-align="center">
 下面为Promela的HelloWorld代码示例
 
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">active proctype <span class="title function_">Hello</span><span class="params">()</span> &#123; </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello World ,Hello pid is %d\n&quot;</span>,_pid);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">init&#123;</span><br><span class="line">    <span class="type">int</span> lpid;</span><br><span class="line">    lpid = run Hello();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello World ,in main process  pid is %d\n&quot;</span>,lpid);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -37,7 +37,7 @@
 <blockquote>
 <p>promela中的<code>active</code>关键字相当于golang语言中的init函数，根据官方文档给出的说明，用active修饰的proctype需要在状态机初始化状态下就运行，也就是说在init进程运行前被active修饰的进程就在运行了，故上述代码输出的结果如下图所示。</p>
 </blockquote>
-<img src="pic2.png" data-align="center">
+<img src="/2023/07/23/Spin-Introduction/pic2.png" data-align="center">
 
 <h3 id="Promela中的变量和类型"><a href="#Promela中的变量和类型" class="headerlink" title="Promela中的变量和类型"></a>Promela中的变量和类型</h3><p>Promela中的变量类型和go语言差不多，共有8种类型，分别是</p>
 <ul>
@@ -51,7 +51,7 @@
 <li>channels 进程之间用于通信的信道</li>
 </ul>
 <p>promela中的变量初值均为0,变量可以通过&#x3D;赋值，也可以通过传参赋值，也可以通过消息传递赋值。大部分C语言中变量支持的操作类型在Promela中都支持，包括移位操作。如下图所示。</p>
-<img src="pic3.png" data-align="center">
+<img src="/2023/07/23/Spin-Introduction/pic3.png" data-align="center">
 
 <h3 id="Promela中的常见关键字"><a href="#Promela中的常见关键字" class="headerlink" title="Promela中的常见关键字"></a>Promela中的常见关键字</h3><ul>
 <li><p><code>run</code>：用于启动一个进程，比如例HelloWorld里面的Hello()进程就是用<code>run</code>启动的，就像调用函数一样。</p>
