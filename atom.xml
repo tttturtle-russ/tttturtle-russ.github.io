@@ -2,15 +2,15 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Haoyang&#39;s Blog</title>
   
+  <subtitle>Welcome to my blog,enjoy and learn yourself</subtitle>
+  <link href="https://tttturtle-russ.github.io/atom.xml" rel="self"/>
   
-  <link href="http://tttturtle-russ.github.io/atom.xml" rel="self"/>
-  
-  <link href="http://tttturtle-russ.github.io/"/>
+  <link href="https://tttturtle-russ.github.io/"/>
   <updated>2024-03-20T16:56:32.146Z</updated>
-  <id>http://tttturtle-russ.github.io/</id>
+  <id>https://tttturtle-russ.github.io/</id>
   
   <author>
-    <name>Turtle Russ</name>
+    <name>RussTurtle0</name>
     
   </author>
   
@@ -18,8 +18,8 @@
   
   <entry>
     <title>MacMini拯救计划(2): Stable-Diffusion</title>
-    <link href="http://tttturtle-russ.github.io/2024/03/20/MacMini%E6%8B%AF%E6%95%91%E8%AE%A1%E5%88%92-2-Stable-Diffusion/"/>
-    <id>http://tttturtle-russ.github.io/2024/03/20/MacMini%E6%8B%AF%E6%95%91%E8%AE%A1%E5%88%92-2-Stable-Diffusion/</id>
+    <link href="https://tttturtle-russ.github.io/2024/03/20/MacMini%E6%8B%AF%E6%95%91%E8%AE%A1%E5%88%92-2-Stable-Diffusion/"/>
+    <id>https://tttturtle-russ.github.io/2024/03/20/MacMini%E6%8B%AF%E6%95%91%E8%AE%A1%E5%88%92-2-Stable-Diffusion/</id>
     <published>2024-03-20T11:36:22.000Z</published>
     <updated>2024-03-20T16:56:32.146Z</updated>
     
@@ -34,18 +34,18 @@
     
     
     
-    <category term="Misc" scheme="http://tttturtle-russ.github.io/tags/Misc/"/>
+    <category term="Misc" scheme="https://tttturtle-russ.github.io/tags/Misc/"/>
     
   </entry>
   
   <entry>
     <title>一个脱离物理外设的物联网固件混合模糊测试工具</title>
-    <link href="http://tttturtle-russ.github.io/2024/03/18/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/"/>
-    <id>http://tttturtle-russ.github.io/2024/03/18/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</id>
+    <link href="https://tttturtle-russ.github.io/2024/03/18/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/"/>
+    <id>https://tttturtle-russ.github.io/2024/03/18/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</id>
     <published>2024-03-18T14:59:33.000Z</published>
-    <updated>2024-03-20T16:56:32.163Z</updated>
+    <updated>2024-03-25T16:32:52.757Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h1><p>本文是对论文<a href="https://ieeexplore.ieee.org/document/10214030/">Physical Devices-Agnostic Hybrid Fuzzing of IoT Firmware</a>的读书笔记</p><ul><li><p>Background:</p><p>   随着物联网设备的普及，其安全性变得愈发受人关注，其中一个重要方面就是固件安全，而fuzzing作为一个有效的漏洞检测技术，在IoT固件的安全测试中扮演着重要角色。但是要将fuzzing应用到IoT固件时，有如下几个问题：</p><ul><li>缺少实际外设时无法正常运行</li><li>缺乏对多外设输入空间的探索</li><li>仪器化和收集反馈的困难</li><li>缺乏故障检测方法</li></ul></li><li><p>Method:</p><p>  文章针对如上问题，提出了一种新颖的fuzzing测试工具: FirmHybirdFuzzer。该工具具有如下特点：</p><ul><li><strong>统一虚拟外设</strong>：集成虚拟外设，FirmHybirdFuzzer可以在没有实际硬件的情况下运行固件</li><li><strong>混合事件生成</strong>：采用混合事件生成方法为不同的外设生成测试输入</li><li><strong>两级覆盖反馈</strong>：通过收集覆盖反馈，工具能够优化测试用例的生成过程。</li><li><strong>插件化故障检测</strong>: 实现了基于插件的故障检测机制，专注于发现内存损坏等典型漏洞。</li></ul></li><li><p>Evaluation:</p><ol><li><strong>虚拟外围设备的有效性</strong>：<ul><li>测试了62个固件图像，结果显示，不同的固件图像能够在系统中成功执行，而无需实际的外围设备。</li></ul></li><li><strong>混合事件生成的有效性和效率</strong>：<ul><li>通过变异不同的外围设备，发现同时变异上下文和网络能够获得更高的代码覆盖率。</li><li>通过不同事件生成调度策略的评估，发现使用变异生成能够提高覆盖率并减少时间开销。</li></ul></li><li><strong>故障检测插件的有效性和性能</strong>：<ul><li>故障检测机制能够有效地识别常见的C&#x2F;C++漏洞。</li><li>栈跟踪能够检测栈溢出和越界读写错误；堆跟踪能够识别堆溢出、空指针解引用、双重释放和使用后释放；指令跟踪能够检测除以零和整数溢出漏洞。</li><li>故障检测插件在可接受的额外时间开销下有效。</li></ul></li><li><strong>与其他固件模糊测试工具的比较</strong>：<ul><li>FirmHybirdFuzzer在硬件独立性、源代码独立性和支持的固件类型方面具有明显的优势。</li><li>与Laelaps相比，FirmHybirdFuzzer在基本块覆盖和外围设备访问点覆盖方面都有显著提升，并且所需时间大幅减少。</li></ul></li></ol></li></ul><h2 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h2><p>物联网固件的一些特性不同于传统的桌面应用和移动应用，比如<strong>不同的底层环境和基于外设的交互。</strong>这些特性给基于fuzzing的漏洞检测带来了很多新的问题。</p><ul><li><p>缺少实际外设时无法正常运行:</p><p>  由于底层操作系统和外设的不同，要将固件运行起来是很困难的。目前有种基于QEMU的动态分析方法，其内置了一个Linux内核的抽象用于模拟固件，这种方法常用于基于LInux的固件动态分析。但是这种方法并不适用于动态分析运行在实时操作系统或裸机上的微控固件，原因是RTOS种类众多且互相不兼容，并且主流的模拟器如QEMU，只能模拟微控的核心外设，当分析未知外设时QEMU就会失效。也有一些方法使用符号执行等技术来模拟未知外设的工作流，如SymDrive，Laelaps，包括提供通用库函数来实现固件分析的HALUcinator，但他们都具有一定的局限性。</p></li><li><p>不支持多外设输入空间的探索</p><p>  IoT固件运行的设备通过不同的外设与环境进行交互，然而主流的fuzzing方法所处理的程序环境接口通常只有单个输入，如Sulley,Peach,AFL++等等。而IoT固件通常有多个输入，如传感器，网络设备等等，并且不同的输入可能由于外设的不同，导致其语法，类型等都不同，而目前还没有一个已知的fuzzing工具可以有效地处理这个问题。</p></li><li><p>无法仪器化和收集反馈用于引导fuzzing</p><p>  通常灰盒fuzzing的关键在于<strong>基于反馈的引导</strong>和<strong>遗传优化，</strong>对于x86软件来说将编译时和运行时仪器化来收集执行输入的覆盖率信息然后用于引导fuzzing优化输入是当前最好的方法。然而，编译时的仪器化需要源码，而对于IoT固件来说通常没有源码。传统的fuzzing方法依赖于观测运行时的崩溃，通常是软件测试或硬件保护触发的崩溃，但是在微控器上这种方法有很多限制，导致很多崩溃发生但并未报告。</p></li></ul><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>为了解决上述问题，文章提出了一个不依赖物理设备的混合模糊测试工具，其可以测试主流的逻辑资源和RTOS而不需要外设，并且能检测常见的C&#x2F;C++漏洞，其针对上述的挑战提出了三个解决方案：</p><ul><li>集成虚拟外设组件</li><li>采用混合事件生成方法用于为不同的外设生成输入</li><li>二级覆盖率反馈机制用于生成测试集</li></ul><h1 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h1><p>工具的主体框架如图所示</p><p><img src="/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/Untitled.png" alt="Untitled"></p><p>框架的输入包括固件的二进制文件和fuzzing配置（核心文件，ROM&#x2F;RAM位置和fuzzing设置等），框架的输出是一个发掘出的漏洞。不同于传统的fuzz工具要么检测用户空间要么检测内核空间，FirmHybridFuzzer同时用户空间程序和内核空间程序。该方法的主要技术有如下几点：</p><ul><li>Symbolic peripheral-based Execution 基于外设的符号执行技术，用于模拟外设的行为。</li><li>Hybrid Event Generation 混合事件生成器，基于约束和突变为不同外设生成不同输入</li><li>Multi Feedback Guidance 多反馈引导，用于优化测试输入</li><li>Fault Detection Mechanism 故障检测机制，检测常见的漏洞</li></ul><h3 id="虚拟外设执行"><a href="#虚拟外设执行" class="headerlink" title="虚拟外设执行"></a><strong>虚拟外设执行</strong></h3><p>文章提出了一个统一的符号化的外设对不同外设的行为进行建模，固件中所有IO操作均被截获并转发到这个符号化的外设中，虚拟外设将基于对外设行为的模拟能力做出相应回复。同时虚拟外设还对不同未知外设建立了三种关键行为模型：</p><ul><li><strong>外设发现</strong>：当处理器通过DMA(Direct Memory Access)访问到一块未知的内存时，该内存区域对应的外设即会做出响应。</li><li><strong>I&#x2F;O 交互</strong>：通过与外设的读操作进行交互并提供有效&#x2F;无效的响应，固件可以执行有效的执行路径。其中写操作都是被忽略的因为其不会对控制流产生影响。</li><li><strong>中断注入</strong>：基于QEMU的机器协议，作者设计了三个QMP命令（activate irqs, inject irq，inject all irqs）并且实现了python接口用于随机注入中断指令。要注意的是注入的中断指令不会被当作fuzzing的输入，我认为这是为了更加接近真实环境所做的行为。</li></ul><p>虚拟外设通常会产生有效范围以外的值，作者认为这是可接受的，因为这有利于探索错误处理代码段中的漏洞，我认为这也同时可以增加控制流数量，可能会增加状态空间的大小但是有利于全面的探索。</p><h3 id="混合事件生成"><a href="#混合事件生成" class="headerlink" title="混合事件生成"></a>混合事件生成</h3><p>混合事件生成器由两个部分组成：基于约束生成和基于突变生成。该方法解决了传统灰盒模糊测试无法对多外设生成有效输入的问题。</p><ul><li><p><strong>基于约束生成</strong>：该方法使用一个符号执行引擎生成外设的输入，当固件执行到一个未知外设的内存区域时，QEMU会暂时挂起，将内存和寄存器信息输入到符号执行引擎中，引擎会输出几条可能的路径，然后根据启发式路径选择策略选择路径并调用SMT进行约束求解来生成对应的输入，并将其存储在对应的外设种子队列中。下面时该方法的几个关键技术</p><ul><li>基于访问的符号化：顾名思义，每次访问外设或变量都会分配一个新的符号给它，即使之前访问并分配过这个外设或变量。这样做的目的是为了防止外设内存的不确定性造成错误的后果，如下图所示，如果base没有每次都被符号化，那么<code>cnt1 - cnt0</code>将始终为0.</li></ul><p>  <img src="/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/image2.png" alt="Untitled"></p><ul><li>推断式符号执行：采用该技术是为了减少约束求解器调用，该技术要求符号执行引擎积累到一定程度的分支才能调用约束求解器，同时指定三条规则进行路径选择。<ul><li>优先深层路径</li><li>优先新发现的路径</li><li>避免无穷循环</li></ul></li></ul></li><li><p><strong>基于突变生成</strong>：当固件执行到某个外设要进行读操作时，当前已存在的种子将会发生突变，突变产生的新事件将会加入到种子队列中然后喂入QEMU来继续执行。下面是该方法的几个关键技术</p><ul><li>外设感知的有效种子生成：初始的种子通常需要符合外设的要求，比如语法和语义正确，这将为之后的突变提供更好的基础。</li><li>特定外设的突变能力：考虑到外设交互的特点，设计了一系列特定的突变算子如下：<ul><li>BitFlip：翻转已有种子的1,4,8,16,32,64,128位</li><li>Arithmetic：在已有种子加或减上一个随机值</li><li>Interesting：在种子中插入一些有趣的值，例如条件表达式中使用的固定值。</li><li>Overwriting：通过固定内容(例如,头部)在协议的特定字段上覆盖现有种子的某些块。</li></ul></li></ul></li><li><p>基于概率调度：一般来说，基于约束的生成擅长生成事件来驱动固件沿着特定的路径执行。突变型代在生成探索更多路径的多样化事件方面具有优势，包括错误处理代码。作者在这里 的建议是在程序初期使用基于约束生成方法，当外设的种子序列长度大于人工指定的限制，则使用基于概率调度算法调整生成方法。注意这个概率是人工指定的。</p></li></ul><h3 id="二级反馈引导"><a href="#二级反馈引导" class="headerlink" title="二级反馈引导"></a>二级反馈引导</h3><p>该方法利用QEMU来实现，由于固件是由QEMU翻译过来，根据QEMU的中间层可以很容易获取运行时信息。这构成了方法动态收集反馈信息的基础，包括已执行的基本块，访问的外设接入点等。同时使用多维度覆盖反馈，针对块到块和外设到外设两个维度。</p><ul><li>BB2BB覆盖率：BB2BB是指一个外设中的代码块跳转到另一个代码块，在运行时追踪每一个独特的BB2BB操作并将其数量作为FICFG覆盖率的参考。如果一个事件触发了一个新的BB2BB，则认为这个事件是有趣的并将其突变生成更多的种子。</li><li>PP2PP覆盖率：BB2BB是指一个外设跳转到另一个外设，在运行时跟踪所有唯一的PP2PP，因为它是显示FPADG覆盖率的直接度量。所有访问的唯一的PP2PP存储在一个列表中。该列表作为PP2PP的覆盖图。如果一个事件触发了一个新的PP2PP，则认为这个事件是有趣的并将其突变生成更多的种子。</li></ul><p>混合事件生成和二级反馈引导的结合算法如下所示<br><img src="/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/image.png"></p><h3 id="故障检测机制"><a href="#故障检测机制" class="headerlink" title="故障检测机制"></a>故障检测机制</h3><p>该方法借鉴PANDA中用于检测内存损坏的启发式方法，实现了一种基于微控制器的固件故障检测机制。由于最新的QEMU对基于ARM CortexM的设备具有更好的模拟能力，作者将PANDA机制移植到最新的QEMU中，并对其进行扩展，以支持检测更多的漏洞。更具体地说，设计并实现了3个跟踪插件作为故障检测机制中的QEMU TCG插件。</p><ul><li>栈跟踪</li><li>堆跟踪</li><li>指令跟踪</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h1><p>本文是对论文<a href="https://ieeexplore.ieee.org/document/10214030/">Physical Devices-Agnostic Hybrid Fuzzing of IoT Firmware</a>的读书笔记</p><ul><li><p>Background:</p><p>   随着物联网设备的普及，其安全性变得愈发受人关注，其中一个重要方面就是固件安全，而fuzzing作为一个有效的漏洞检测技术，在IoT固件的安全测试中扮演着重要角色。但是要将fuzzing应用到IoT固件时，有如下几个问题：</p><ul><li>缺少实际外设时无法正常运行</li><li>缺乏对多外设输入空间的探索</li><li>仪器化和收集反馈的困难</li><li>缺乏故障检测方法</li></ul></li><li><p>Method:</p><p>  文章针对如上问题，提出了一种新颖的fuzzing测试工具: FirmHybirdFuzzer。该工具具有如下特点：</p><ul><li><strong>统一虚拟外设</strong>：集成虚拟外设，FirmHybirdFuzzer可以在没有实际硬件的情况下运行固件</li><li><strong>混合事件生成</strong>：采用混合事件生成方法为不同的外设生成测试输入</li><li><strong>两级覆盖反馈</strong>：通过收集覆盖反馈，工具能够优化测试用例的生成过程。</li><li><strong>插件化故障检测</strong>: 实现了基于插件的故障检测机制，专注于发现内存损坏等典型漏洞。</li></ul></li><li><p>Evaluation:</p><ol><li><strong>虚拟外围设备的有效性</strong>：<ul><li>测试了62个固件图像，结果显示，不同的固件图像能够在系统中成功执行，而无需实际的外围设备。</li></ul></li><li><strong>混合事件生成的有效性和效率</strong>：<ul><li>通过变异不同的外围设备，发现同时变异上下文和网络能够获得更高的代码覆盖率。</li><li>通过不同事件生成调度策略的评估，发现使用变异生成能够提高覆盖率并减少时间开销。</li></ul></li><li><strong>故障检测插件的有效性和性能</strong>：<ul><li>故障检测机制能够有效地识别常见的C&#x2F;C++漏洞。</li><li>栈跟踪能够检测栈溢出和越界读写错误；堆跟踪能够识别堆溢出、空指针解引用、双重释放和使用后释放；指令跟踪能够检测除以零和整数溢出漏洞。</li><li>故障检测插件在可接受的额外时间开销下有效。</li></ul></li><li><strong>与其他固件模糊测试工具的比较</strong>：<ul><li>FirmHybirdFuzzer在硬件独立性、源代码独立性和支持的固件类型方面具有明显的优势。</li><li>与Laelaps相比，FirmHybirdFuzzer在基本块覆盖和外围设备访问点覆盖方面都有显著提升，并且所需时间大幅减少。</li></ul></li></ol></li></ul><h2 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h2><p>物联网固件的一些特性不同于传统的桌面应用和移动应用，比如<strong>不同的底层环境和基于外设的交互。</strong>这些特性给基于fuzzing的漏洞检测带来了很多新的问题。</p><ul><li><p>缺少实际外设时无法正常运行:</p><p>  由于底层操作系统和外设的不同，要将固件运行起来是很困难的。目前有种基于QEMU的动态分析方法，其内置了一个Linux内核的抽象用于模拟固件，这种方法常用于基于LInux的固件动态分析。但是这种方法并不适用于动态分析运行在实时操作系统或裸机上的微控固件，原因是RTOS种类众多且互相不兼容，并且主流的模拟器如QEMU，只能模拟微控的核心外设，当分析未知外设时QEMU就会失效。也有一些方法使用符号执行等技术来模拟未知外设的工作流，如SymDrive，Laelaps，包括提供通用库函数来实现固件分析的HALUcinator，但他们都具有一定的局限性。</p></li><li><p>不支持多外设输入空间的探索</p><p>  IoT固件运行的设备通过不同的外设与环境进行交互，然而主流的fuzzing方法所处理的程序环境接口通常只有单个输入，如Sulley,Peach,AFL++等等。而IoT固件通常有多个输入，如传感器，网络设备等等，并且不同的输入可能由于外设的不同，导致其语法，类型等都不同，而目前还没有一个已知的fuzzing工具可以有效地处理这个问题。</p></li><li><p>无法仪器化和收集反馈用于引导fuzzing</p><p>  通常灰盒fuzzing的关键在于<strong>基于反馈的引导</strong>和<strong>遗传优化，</strong>对于x86软件来说将编译时和运行时仪器化来收集执行输入的覆盖率信息然后用于引导fuzzing优化输入是当前最好的方法。然而，编译时的仪器化需要源码，而对于IoT固件来说通常没有源码。传统的fuzzing方法依赖于观测运行时的崩溃，通常是软件测试或硬件保护触发的崩溃，但是在微控器上这种方法有很多限制，导致很多崩溃发生但并未报告。</p></li></ul><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>为了解决上述问题，文章提出了一个不依赖物理设备的混合模糊测试工具，其可以测试主流的逻辑资源和RTOS而不需要外设，并且能检测常见的C&#x2F;C++漏洞，其针对上述的挑战提出了三个解决方案：</p><ul><li>集成虚拟外设组件</li><li>采用混合事件生成方法用于为不同的外设生成输入</li><li>二级覆盖率反馈机制用于生成测试集</li></ul><h1 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h1><p>工具的主体框架如图所示</p><p><img src="/source/_posts/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/Untitled.png" alt="Untitled"></p><p>框架的输入包括固件的二进制文件和fuzzing配置（核心文件，ROM&#x2F;RAM位置和fuzzing设置等），框架的输出是一个发掘出的漏洞。不同于传统的fuzz工具要么检测用户空间要么检测内核空间，FirmHybridFuzzer同时用户空间程序和内核空间程序。该方法的主要技术有如下几点：</p><ul><li>Symbolic peripheral-based Execution 基于外设的符号执行技术，用于模拟外设的行为。</li><li>Hybrid Event Generation 混合事件生成器，基于约束和突变为不同外设生成不同输入</li><li>Multi Feedback Guidance 多反馈引导，用于优化测试输入</li><li>Fault Detection Mechanism 故障检测机制，检测常见的漏洞</li></ul><h3 id="虚拟外设执行"><a href="#虚拟外设执行" class="headerlink" title="虚拟外设执行"></a><strong>虚拟外设执行</strong></h3><p>文章提出了一个统一的符号化的外设对不同外设的行为进行建模，固件中所有IO操作均被截获并转发到这个符号化的外设中，虚拟外设将基于对外设行为的模拟能力做出相应回复。同时虚拟外设还对不同未知外设建立了三种关键行为模型：</p><ul><li><strong>外设发现</strong>：当处理器通过DMA(Direct Memory Access)访问到一块未知的内存时，该内存区域对应的外设即会做出响应。</li><li><strong>I&#x2F;O 交互</strong>：通过与外设的读操作进行交互并提供有效&#x2F;无效的响应，固件可以执行有效的执行路径。其中写操作都是被忽略的因为其不会对控制流产生影响。</li><li><strong>中断注入</strong>：基于QEMU的机器协议，作者设计了三个QMP命令（activate irqs, inject irq，inject all irqs）并且实现了python接口用于随机注入中断指令。要注意的是注入的中断指令不会被当作fuzzing的输入，我认为这是为了更加接近真实环境所做的行为。</li></ul><p>虚拟外设通常会产生有效范围以外的值，作者认为这是可接受的，因为这有利于探索错误处理代码段中的漏洞，我认为这也同时可以增加控制流数量，可能会增加状态空间的大小但是有利于全面的探索。</p><h3 id="混合事件生成"><a href="#混合事件生成" class="headerlink" title="混合事件生成"></a>混合事件生成</h3><p>混合事件生成器由两个部分组成：基于约束生成和基于突变生成。该方法解决了传统灰盒模糊测试无法对多外设生成有效输入的问题。</p><ul><li><p><strong>基于约束生成</strong>：该方法使用一个符号执行引擎生成外设的输入，当固件执行到一个未知外设的内存区域时，QEMU会暂时挂起，将内存和寄存器信息输入到符号执行引擎中，引擎会输出几条可能的路径，然后根据启发式路径选择策略选择路径并调用SMT进行约束求解来生成对应的输入，并将其存储在对应的外设种子队列中。下面时该方法的几个关键技术</p><ul><li>基于访问的符号化：顾名思义，每次访问外设或变量都会分配一个新的符号给它，即使之前访问并分配过这个外设或变量。这样做的目的是为了防止外设内存的不确定性造成错误的后果，如下图所示，如果base没有每次都被符号化，那么<code>cnt1 - cnt0</code>将始终为0.</li></ul><p>  <img src="/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/image2.png" alt="Untitled"></p><ul><li>推断式符号执行：采用该技术是为了减少约束求解器调用，该技术要求符号执行引擎积累到一定程度的分支才能调用约束求解器，同时指定三条规则进行路径选择。<ul><li>优先深层路径</li><li>优先新发现的路径</li><li>避免无穷循环</li></ul></li></ul></li><li><p><strong>基于突变生成</strong>：当固件执行到某个外设要进行读操作时，当前已存在的种子将会发生突变，突变产生的新事件将会加入到种子队列中然后喂入QEMU来继续执行。下面是该方法的几个关键技术</p><ul><li>外设感知的有效种子生成：初始的种子通常需要符合外设的要求，比如语法和语义正确，这将为之后的突变提供更好的基础。</li><li>特定外设的突变能力：考虑到外设交互的特点，设计了一系列特定的突变算子如下：<ul><li>BitFlip：翻转已有种子的1,4,8,16,32,64,128位</li><li>Arithmetic：在已有种子加或减上一个随机值</li><li>Interesting：在种子中插入一些有趣的值，例如条件表达式中使用的固定值。</li><li>Overwriting：通过固定内容(例如,头部)在协议的特定字段上覆盖现有种子的某些块。</li></ul></li></ul></li><li><p>基于概率调度：一般来说，基于约束的生成擅长生成事件来驱动固件沿着特定的路径执行。突变型代在生成探索更多路径的多样化事件方面具有优势，包括错误处理代码。作者在这里 的建议是在程序初期使用基于约束生成方法，当外设的种子序列长度大于人工指定的限制，则使用基于概率调度算法调整生成方法。注意这个概率是人工指定的。</p></li></ul><h3 id="二级反馈引导"><a href="#二级反馈引导" class="headerlink" title="二级反馈引导"></a>二级反馈引导</h3><p>该方法利用QEMU来实现，由于固件是由QEMU翻译过来，根据QEMU的中间层可以很容易获取运行时信息。这构成了方法动态收集反馈信息的基础，包括已执行的基本块，访问的外设接入点等。同时使用多维度覆盖反馈，针对块到块和外设到外设两个维度。</p><ul><li>BB2BB覆盖率：BB2BB是指一个外设中的代码块跳转到另一个代码块，在运行时追踪每一个独特的BB2BB操作并将其数量作为FICFG覆盖率的参考。如果一个事件触发了一个新的BB2BB，则认为这个事件是有趣的并将其突变生成更多的种子。</li><li>PP2PP覆盖率：BB2BB是指一个外设跳转到另一个外设，在运行时跟踪所有唯一的PP2PP，因为它是显示FPADG覆盖率的直接度量。所有访问的唯一的PP2PP存储在一个列表中。该列表作为PP2PP的覆盖图。如果一个事件触发了一个新的PP2PP，则认为这个事件是有趣的并将其突变生成更多的种子。</li></ul><p>混合事件生成和二级反馈引导的结合算法如下所示<br><img src="/%E4%B8%80%E4%B8%AA%E8%84%B1%E7%A6%BB%E7%89%A9%E7%90%86%E5%A4%96%E8%AE%BE%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%9B%BA%E4%BB%B6%E6%B7%B7%E5%90%88%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/image.png"></p><h3 id="故障检测机制"><a href="#故障检测机制" class="headerlink" title="故障检测机制"></a>故障检测机制</h3><p>该方法借鉴PANDA中用于检测内存损坏的启发式方法，实现了一种基于微控制器的固件故障检测机制。由于最新的QEMU对基于ARM CortexM的设备具有更好的模拟能力，作者将PANDA机制移植到最新的QEMU中，并对其进行扩展，以支持检测更多的漏洞。更具体地说，设计并实现了3个跟踪插件作为故障检测机制中的QEMU TCG插件。</p><ul><li>栈跟踪</li><li>堆跟踪</li><li>指令跟踪</li></ul>]]></content>
     
     
       
@@ -60,8 +60,8 @@
   
   <entry>
     <title>Mac Mini 拯救计划(1): 旁路由</title>
-    <link href="http://tttturtle-russ.github.io/2024/03/17/MacOS-%E6%8B%AF%E6%95%91%E8%AE%A1%E5%88%92-1-%E6%97%81%E8%B7%AF%E7%94%B1/"/>
-    <id>http://tttturtle-russ.github.io/2024/03/17/MacOS-%E6%8B%AF%E6%95%91%E8%AE%A1%E5%88%92-1-%E6%97%81%E8%B7%AF%E7%94%B1/</id>
+    <link href="https://tttturtle-russ.github.io/2024/03/17/MacOS-%E6%8B%AF%E6%95%91%E8%AE%A1%E5%88%92-1-%E6%97%81%E8%B7%AF%E7%94%B1/"/>
+    <id>https://tttturtle-russ.github.io/2024/03/17/MacOS-%E6%8B%AF%E6%95%91%E8%AE%A1%E5%88%92-1-%E6%97%81%E8%B7%AF%E7%94%B1/</id>
     <published>2024-03-17T14:51:12.000Z</published>
     <updated>2024-03-20T16:56:32.150Z</updated>
     
@@ -76,14 +76,14 @@
     
     
     
-    <category term="Misc" scheme="http://tttturtle-russ.github.io/tags/Misc/"/>
+    <category term="Misc" scheme="https://tttturtle-russ.github.io/tags/Misc/"/>
     
   </entry>
   
   <entry>
     <title>(1) Radare2 安装</title>
-    <link href="http://tttturtle-russ.github.io/2024/03/13/1-Radare2-%E5%AE%89%E8%A3%85/"/>
-    <id>http://tttturtle-russ.github.io/2024/03/13/1-Radare2-%E5%AE%89%E8%A3%85/</id>
+    <link href="https://tttturtle-russ.github.io/2024/03/13/1-Radare2-%E5%AE%89%E8%A3%85/"/>
+    <id>https://tttturtle-russ.github.io/2024/03/13/1-Radare2-%E5%AE%89%E8%A3%85/</id>
     <published>2024-03-13T06:36:03.000Z</published>
     <updated>2024-03-20T16:56:32.139Z</updated>
     
@@ -98,16 +98,16 @@
     
     
     
-    <category term="Tools" scheme="http://tttturtle-russ.github.io/tags/Tools/"/>
+    <category term="Tools" scheme="https://tttturtle-russ.github.io/tags/Tools/"/>
     
-    <category term="Reverse Engineering" scheme="http://tttturtle-russ.github.io/tags/Reverse-Engineering/"/>
+    <category term="Reverse Engineering" scheme="https://tttturtle-russ.github.io/tags/Reverse-Engineering/"/>
     
   </entry>
   
   <entry>
     <title>Reproduce of intercode-CTF</title>
-    <link href="http://tttturtle-russ.github.io/2024/03/11/Reproduce-of-intercode-CTF/"/>
-    <id>http://tttturtle-russ.github.io/2024/03/11/Reproduce-of-intercode-CTF/</id>
+    <link href="https://tttturtle-russ.github.io/2024/03/11/Reproduce-of-intercode-CTF/"/>
+    <id>https://tttturtle-russ.github.io/2024/03/11/Reproduce-of-intercode-CTF/</id>
     <published>2024-03-11T05:46:03.000Z</published>
     <updated>2024-03-20T16:56:32.152Z</updated>
     
@@ -122,18 +122,18 @@
     
     
     
-    <category term="Paper Reproduce" scheme="http://tttturtle-russ.github.io/tags/Paper-Reproduce/"/>
+    <category term="Paper Reproduce" scheme="https://tttturtle-russ.github.io/tags/Paper-Reproduce/"/>
     
   </entry>
   
   <entry>
     <title>当语言代理成为攻击者: 通过CTF评估网络安全技能</title>
-    <link href="http://tttturtle-russ.github.io/2024/03/06/%E5%BD%93%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%90%86%E6%88%90%E4%B8%BA%E6%94%BB%E5%87%BB%E8%80%85-%E9%80%9A%E8%BF%87CTF%E8%AF%84%E4%BC%B0%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD/"/>
-    <id>http://tttturtle-russ.github.io/2024/03/06/%E5%BD%93%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%90%86%E6%88%90%E4%B8%BA%E6%94%BB%E5%87%BB%E8%80%85-%E9%80%9A%E8%BF%87CTF%E8%AF%84%E4%BC%B0%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD/</id>
+    <link href="https://tttturtle-russ.github.io/2024/03/06/%E5%BD%93%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%90%86%E6%88%90%E4%B8%BA%E6%94%BB%E5%87%BB%E8%80%85-%E9%80%9A%E8%BF%87CTF%E8%AF%84%E4%BC%B0%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD/"/>
+    <id>https://tttturtle-russ.github.io/2024/03/06/%E5%BD%93%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%90%86%E6%88%90%E4%B8%BA%E6%94%BB%E5%87%BB%E8%80%85-%E9%80%9A%E8%BF%87CTF%E8%AF%84%E4%BC%B0%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD/</id>
     <published>2024-03-06T08:58:07.000Z</published>
-    <updated>2024-03-20T16:56:32.178Z</updated>
+    <updated>2024-03-25T15:49:07.446Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>文章探讨了语言模型（LMs）在网络安全领域的潜力和挑战，特别是在自动化和增强数字工作方面。随着LMs在计算效率和执行速度方面的显著提升，它们在定位漏洞、执行复杂社会工程和黑客攻击方面可能表现出极高的能力。为了理解和指导LMs在网络安全领域的发展，作者们提出了InterCode-CTF，这是一个新颖的任务环境和基准测试，用于评估语言代理在Capture the Flag（CTF）任务上的表现。作者们手动收集并验证了100个任务实例，这些实例要求使用这些网络安全技能，并在这些实例上评估了当前顶尖的LMs。</p><h2 id="Inter-Code-CTF"><a href="#Inter-Code-CTF" class="headerlink" title="Inter-Code CTF"></a>Inter-Code CTF</h2><p>文章介绍了 Inter-Code CTF 中的任务定义，如何配置 Inter-Code CTF 代码环境以及任务套件的构建。</p><h3 id="Task-Definition"><a href="#Task-Definition" class="headerlink" title="Task Definition"></a>Task Definition</h3><p>Inter-Code CTF 定义的任务很像现实世界中的“危险的” CTF 问题，遵循了<a href="https://api.semanticscholar.org/CorpusID:259262186">一种互动式编程任务的构建方法</a>。给定任务的自然语言描述以及一些必须的资源（二进制文件&#x2F;文字&#x2F;图片等），要求代理进行问题的求解，代理通过和 shell 交互来进行每一轮的行为，可以是 command 也可以是 python script。</p><h3 id="Task-Environment"><a href="#Task-Environment" class="headerlink" title="Task Environment"></a>Task Environment</h3><p>为了保证安全和可重复执行，作者使用 Docker 搭建沙盒环境，InterCode - CTF自动解析代理生成的Python或Bash代码，处理执行，并返回标准输出作为观察。</p><h3 id="Task-Suite"><a href="#Task-Suite" class="headerlink" title="Task Suite"></a>Task Suite</h3><p>在任务数据集的构造中，作者首先在 PicoCTF 上收集了题目，然后进行如下三个步骤：</p><ol><li><strong>完成PicoCTF问题</strong>：首先，作者们在PicoCTF的网络平台上尝试完成一个问题。如果成功，他们就会继续下一步</li><li><strong>在InterCode-CTF中重建任务设置</strong>：<ul><li>将与任务相关的数字资产（如代码、图像、文本文件）存储到特定于任务实例的目录中。</li><li>如果需要，向Dockerfile定义中添加必要的依赖项。这个Dockerfile定义在文章的第3.1节中已经建立。</li></ul></li><li><strong>验证任务实例的可行性</strong>：为了确保任务实例对代理来说是可行的，作者们在InterCode-CTF的Docker环境中手动重新完成任务。</li></ol><h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>作者主要对 GPT4 模型进行了实验，GPT4 完成了 100 个任务中的 40 个，结果分布如下所示</p><p><img src="/%E5%BD%93%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%90%86%E6%88%90%E4%B8%BA%E6%94%BB%E5%87%BB%E8%80%85-%E9%80%9A%E8%BF%87CTF%E8%AF%84%E4%BC%B0%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD/1.png" alt="Untitled"></p><p>GPT4 的解题速度平均在 3.9 轮，也就是说，每 3.9 轮就能解出一个 flag。</p><p>作者还根据结果，提出了 GPT4 的优缺点：</p><ol><li><strong>复杂任务的挑战</strong>：GPT-4在处理需要多步骤和专业知识的复杂网络安全任务时遇到困难。尽管它能够解决一些基础的通用技能任务，但在更专业的领域，如逆向工程、密码学、二进制利用和网络利用方面，它的性能有所下降。</li><li><strong>任务解决策略的单一性</strong>：GPT-4在解决任务时表现出的策略较为单一，它通常在3-4个回合内解决问题，但在需要更多回合的任务上表现不佳。这表明GPT-4在处理需要多步骤逻辑和策略调整的任务时存在局限性。</li><li>速度相比人类快得多：作者平均每题要花费3.5分钟，部分需要 debug 的题目可能要花到 15 分钟，但是 GPT4 平均每个任务只需要 30 秒。对于需要复杂代码的解法，GPT4 也可以用远短于人类的时间生成代码。</li></ol><h2 id="限制和未来可能的工作"><a href="#限制和未来可能的工作" class="headerlink" title="限制和未来可能的工作"></a>限制和未来可能的工作</h2><ol><li><strong>手动任务创建过程</strong>：构建InterCode-CTF任务套件是一个手动过程，需要专家级别的人类进行每个任务实例的验证。这个过程耗时且劳动密集，限制了任务套件的扩展和多样性。</li><li><strong>任务环境的扩展性</strong>：当前的InterCode-CTF Docker环境基于Docker，虽然为任务提供了一个安全和可复现的执行环境，但它的功能有限。例如，它缺乏浏览器功能，这限制了能够重现的网络利用任务类型。</li><li><strong>计算资源和时间限制</strong>：评估更多模型和推理框架需要更多的计算资源和时间。作者们提到，他们希望在未来能够利用更多的资源来评估更多的模型，以获得更全面的评估结果。</li><li><strong>任务套件的增长</strong>：作者们希望继续扩大InterCode-CTF任务套件的规模，以包含更多类型的网络安全任务。这可能需要开发自动化程序来减少人类在任务创建中的参与。</li><li><strong>工具增强的设置或代理</strong>：作者们提到，通过增加工具和能力，可以扩展InterCode-CTF的任务环境，使其能够覆盖更多样化的CTF任务。这可能包括添加浏览网页的能力，以便代理能够完成更多类型的网络利用任务。</li></ol><blockquote><p>开源网址<a href="https://github.com/intercode-benchmark/intercode-benchmark">intercode-benchmark</a>现在似乎已经迁移到了<a href="https://github.com/princeton-nlp/intercode">intercode</a>这里，数据集在此<a href="https://github.com/princeton-nlp/intercode/tree/master/data/ctf">Dataset</a></p></blockquote>]]></content>
+    <content type="html"><![CDATA[<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>文章探讨了语言模型（LMs）在网络安全领域的潜力和挑战，特别是在自动化和增强数字工作方面。随着LMs在计算效率和执行速度方面的显著提升，它们在定位漏洞、执行复杂社会工程和黑客攻击方面可能表现出极高的能力。为了理解和指导LMs在网络安全领域的发展，作者们提出了InterCode-CTF，这是一个新颖的任务环境和基准测试，用于评估语言代理在Capture the Flag（CTF）任务上的表现。作者们手动收集并验证了100个任务实例，这些实例要求使用这些网络安全技能，并在这些实例上评估了当前顶尖的LMs。</p><h2 id="Inter-Code-CTF"><a href="#Inter-Code-CTF" class="headerlink" title="Inter-Code CTF"></a>Inter-Code CTF</h2><p>文章介绍了 Inter-Code CTF 中的任务定义，如何配置 Inter-Code CTF 代码环境以及任务套件的构建。</p><h3 id="Task-Definition"><a href="#Task-Definition" class="headerlink" title="Task Definition"></a>Task Definition</h3><p>Inter-Code CTF 定义的任务很像现实世界中的“危险的” CTF 问题，遵循了<a href="https://api.semanticscholar.org/CorpusID:259262186">一种互动式编程任务的构建方法</a>。给定任务的自然语言描述以及一些必须的资源（二进制文件&#x2F;文字&#x2F;图片等），要求代理进行问题的求解，代理通过和 shell 交互来进行每一轮的行为，可以是 command 也可以是 python script。</p><h3 id="Task-Environment"><a href="#Task-Environment" class="headerlink" title="Task Environment"></a>Task Environment</h3><p>为了保证安全和可重复执行，作者使用 Docker 搭建沙盒环境，InterCode - CTF自动解析代理生成的Python或Bash代码，处理执行，并返回标准输出作为观察。</p><h3 id="Task-Suite"><a href="#Task-Suite" class="headerlink" title="Task Suite"></a>Task Suite</h3><p>在任务数据集的构造中，作者首先在 PicoCTF 上收集了题目，然后进行如下三个步骤：</p><ol><li><strong>完成PicoCTF问题</strong>：首先，作者们在PicoCTF的网络平台上尝试完成一个问题。如果成功，他们就会继续下一步</li><li><strong>在InterCode-CTF中重建任务设置</strong>：<ul><li>将与任务相关的数字资产（如代码、图像、文本文件）存储到特定于任务实例的目录中。</li><li>如果需要，向Dockerfile定义中添加必要的依赖项。这个Dockerfile定义在文章的第3.1节中已经建立。</li></ul></li><li><strong>验证任务实例的可行性</strong>：为了确保任务实例对代理来说是可行的，作者们在InterCode-CTF的Docker环境中手动重新完成任务。</li></ol><h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>作者主要对 GPT4 模型进行了实验，GPT4 完成了 100 个任务中的 40 个，结果分布如下所示</p><p><img src="/../%E5%BD%93%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%90%86%E6%88%90%E4%B8%BA%E6%94%BB%E5%87%BB%E8%80%85-%E9%80%9A%E8%BF%87CTF%E8%AF%84%E4%BC%B0%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD/1.png" alt="Untitled"></p><p>GPT4 的解题速度平均在 3.9 轮，也就是说，每 3.9 轮就能解出一个 flag。</p><p>作者还根据结果，提出了 GPT4 的优缺点：</p><ol><li><strong>复杂任务的挑战</strong>：GPT-4在处理需要多步骤和专业知识的复杂网络安全任务时遇到困难。尽管它能够解决一些基础的通用技能任务，但在更专业的领域，如逆向工程、密码学、二进制利用和网络利用方面，它的性能有所下降。</li><li><strong>任务解决策略的单一性</strong>：GPT-4在解决任务时表现出的策略较为单一，它通常在3-4个回合内解决问题，但在需要更多回合的任务上表现不佳。这表明GPT-4在处理需要多步骤逻辑和策略调整的任务时存在局限性。</li><li>速度相比人类快得多：作者平均每题要花费3.5分钟，部分需要 debug 的题目可能要花到 15 分钟，但是 GPT4 平均每个任务只需要 30 秒。对于需要复杂代码的解法，GPT4 也可以用远短于人类的时间生成代码。</li></ol><h2 id="限制和未来可能的工作"><a href="#限制和未来可能的工作" class="headerlink" title="限制和未来可能的工作"></a>限制和未来可能的工作</h2><ol><li><strong>手动任务创建过程</strong>：构建InterCode-CTF任务套件是一个手动过程，需要专家级别的人类进行每个任务实例的验证。这个过程耗时且劳动密集，限制了任务套件的扩展和多样性。</li><li><strong>任务环境的扩展性</strong>：当前的InterCode-CTF Docker环境基于Docker，虽然为任务提供了一个安全和可复现的执行环境，但它的功能有限。例如，它缺乏浏览器功能，这限制了能够重现的网络利用任务类型。</li><li><strong>计算资源和时间限制</strong>：评估更多模型和推理框架需要更多的计算资源和时间。作者们提到，他们希望在未来能够利用更多的资源来评估更多的模型，以获得更全面的评估结果。</li><li><strong>任务套件的增长</strong>：作者们希望继续扩大InterCode-CTF任务套件的规模，以包含更多类型的网络安全任务。这可能需要开发自动化程序来减少人类在任务创建中的参与。</li><li><strong>工具增强的设置或代理</strong>：作者们提到，通过增加工具和能力，可以扩展InterCode-CTF的任务环境，使其能够覆盖更多样化的CTF任务。这可能包括添加浏览网页的能力，以便代理能够完成更多类型的网络利用任务。</li></ol><blockquote><p>开源网址<a href="https://github.com/intercode-benchmark/intercode-benchmark">intercode-benchmark</a>现在似乎已经迁移到了<a href="https://github.com/princeton-nlp/intercode">intercode</a>这里，数据集在此<a href="https://github.com/princeton-nlp/intercode/tree/master/data/ctf">Dataset</a></p></blockquote>]]></content>
     
     
       
@@ -148,8 +148,8 @@
   
   <entry>
     <title>LLM解决攻击性安全问题的实际评估</title>
-    <link href="http://tttturtle-russ.github.io/2024/03/06/LLM%E8%A7%A3%E5%86%B3%E6%94%BB%E5%87%BB%E6%80%A7%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E7%9A%84%E5%AE%9E%E9%99%85%E8%AF%84%E4%BC%B0/"/>
-    <id>http://tttturtle-russ.github.io/2024/03/06/LLM%E8%A7%A3%E5%86%B3%E6%94%BB%E5%87%BB%E6%80%A7%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E7%9A%84%E5%AE%9E%E9%99%85%E8%AF%84%E4%BC%B0/</id>
+    <link href="https://tttturtle-russ.github.io/2024/03/06/LLM%E8%A7%A3%E5%86%B3%E6%94%BB%E5%87%BB%E6%80%A7%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E7%9A%84%E5%AE%9E%E9%99%85%E8%AF%84%E4%BC%B0/"/>
+    <id>https://tttturtle-russ.github.io/2024/03/06/LLM%E8%A7%A3%E5%86%B3%E6%94%BB%E5%87%BB%E6%80%A7%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E7%9A%84%E5%AE%9E%E9%99%85%E8%AF%84%E4%BC%B0/</id>
     <published>2024-03-06T08:48:31.000Z</published>
     <updated>2024-03-20T16:56:32.142Z</updated>
     
@@ -164,14 +164,14 @@
     
     
     
-    <category term="Paper" scheme="http://tttturtle-russ.github.io/tags/Paper/"/>
+    <category term="Paper" scheme="https://tttturtle-russ.github.io/tags/Paper/"/>
     
   </entry>
   
   <entry>
     <title>基于LLM驱动的自动代理(3)-Tool Use</title>
-    <link href="http://tttturtle-russ.github.io/2024/03/04/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-3-Tool-Use/"/>
-    <id>http://tttturtle-russ.github.io/2024/03/04/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-3-Tool-Use/</id>
+    <link href="https://tttturtle-russ.github.io/2024/03/04/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-3-Tool-Use/"/>
+    <id>https://tttturtle-russ.github.io/2024/03/04/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-3-Tool-Use/</id>
     <published>2024-03-04T11:59:02.000Z</published>
     <updated>2024-03-20T16:56:32.174Z</updated>
     
@@ -187,14 +187,14 @@
     
     
     
-    <category term="Theory Post" scheme="http://tttturtle-russ.github.io/tags/Theory-Post/"/>
+    <category term="Theory Post" scheme="https://tttturtle-russ.github.io/tags/Theory-Post/"/>
     
   </entry>
   
   <entry>
     <title>基于LLM驱动的自动代理(2)-Memory</title>
-    <link href="http://tttturtle-russ.github.io/2024/03/04/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-2-Memory/"/>
-    <id>http://tttturtle-russ.github.io/2024/03/04/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-2-Memory/</id>
+    <link href="https://tttturtle-russ.github.io/2024/03/04/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-2-Memory/"/>
+    <id>https://tttturtle-russ.github.io/2024/03/04/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-2-Memory/</id>
     <published>2024-03-04T11:58:31.000Z</published>
     <updated>2024-03-20T16:56:32.174Z</updated>
     
@@ -209,14 +209,14 @@
     
     
     
-    <category term="Theory Post" scheme="http://tttturtle-russ.github.io/tags/Theory-Post/"/>
+    <category term="Theory Post" scheme="https://tttturtle-russ.github.io/tags/Theory-Post/"/>
     
   </entry>
   
   <entry>
     <title>基于LLM驱动的自动代理(1)-Planning</title>
-    <link href="http://tttturtle-russ.github.io/2024/03/04/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-1-Planning/"/>
-    <id>http://tttturtle-russ.github.io/2024/03/04/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-1-Planning/</id>
+    <link href="https://tttturtle-russ.github.io/2024/03/04/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-1-Planning/"/>
+    <id>https://tttturtle-russ.github.io/2024/03/04/%E5%9F%BA%E4%BA%8ELLM%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86-1-Planning/</id>
     <published>2024-03-04T04:59:36.000Z</published>
     <updated>2024-03-20T16:56:32.165Z</updated>
     
@@ -231,14 +231,14 @@
     
     
     
-    <category term="Theory Post" scheme="http://tttturtle-russ.github.io/tags/Theory-Post/"/>
+    <category term="Theory Post" scheme="https://tttturtle-russ.github.io/tags/Theory-Post/"/>
     
   </entry>
   
   <entry>
     <title>pwn.hust.college - elf-crackme-level1.0</title>
-    <link href="http://tttturtle-russ.github.io/2023/12/03/elf-crackme-level1-0/"/>
-    <id>http://tttturtle-russ.github.io/2023/12/03/elf-crackme-level1-0/</id>
+    <link href="https://tttturtle-russ.github.io/2023/12/03/elf-crackme-level1-0/"/>
+    <id>https://tttturtle-russ.github.io/2023/12/03/elf-crackme-level1-0/</id>
     <published>2023-12-03T11:20:00.000Z</published>
     <updated>2024-03-20T16:56:32.158Z</updated>
     
@@ -252,17 +252,17 @@
     
     
     
-    <category term="PWN" scheme="http://tttturtle-russ.github.io/categories/PWN/"/>
+    <category term="PWN" scheme="https://tttturtle-russ.github.io/categories/PWN/"/>
     
     
-    <category term="PWN HUST" scheme="http://tttturtle-russ.github.io/tags/PWN-HUST/"/>
+    <category term="PWN HUST" scheme="https://tttturtle-russ.github.io/tags/PWN-HUST/"/>
     
   </entry>
   
   <entry>
     <title>pwn.hust.college - elf-crackme-level1.1</title>
-    <link href="http://tttturtle-russ.github.io/2023/12/03/elf-crackme-level1-1/"/>
-    <id>http://tttturtle-russ.github.io/2023/12/03/elf-crackme-level1-1/</id>
+    <link href="https://tttturtle-russ.github.io/2023/12/03/elf-crackme-level1-1/"/>
+    <id>https://tttturtle-russ.github.io/2023/12/03/elf-crackme-level1-1/</id>
     <published>2023-12-03T11:20:00.000Z</published>
     <updated>2024-03-20T16:56:32.160Z</updated>
     
@@ -276,17 +276,17 @@
     
     
     
-    <category term="PWN" scheme="http://tttturtle-russ.github.io/categories/PWN/"/>
+    <category term="PWN" scheme="https://tttturtle-russ.github.io/categories/PWN/"/>
     
     
-    <category term="PWN HUST" scheme="http://tttturtle-russ.github.io/tags/PWN-HUST/"/>
+    <category term="PWN HUST" scheme="https://tttturtle-russ.github.io/tags/PWN-HUST/"/>
     
   </entry>
   
   <entry>
     <title>Injective Agreement的验证(Needham-Schroeder Protocol)</title>
-    <link href="http://tttturtle-russ.github.io/2023/10/13/Injective-Agreement/"/>
-    <id>http://tttturtle-russ.github.io/2023/10/13/Injective-Agreement/</id>
+    <link href="https://tttturtle-russ.github.io/2023/10/13/Injective-Agreement/"/>
+    <id>https://tttturtle-russ.github.io/2023/10/13/Injective-Agreement/</id>
     <published>2023-10-12T16:23:34.000Z</published>
     <updated>2024-03-20T16:56:32.140Z</updated>
     
@@ -300,21 +300,21 @@
     
     
     
-    <category term="Formal Verification" scheme="http://tttturtle-russ.github.io/categories/Formal-Verification/"/>
+    <category term="Formal Verification" scheme="https://tttturtle-russ.github.io/categories/Formal-Verification/"/>
     
-    <category term="Protocol" scheme="http://tttturtle-russ.github.io/categories/Formal-Verification/Protocol/"/>
+    <category term="Protocol" scheme="https://tttturtle-russ.github.io/categories/Formal-Verification/Protocol/"/>
     
     
-    <category term="Model Checking" scheme="http://tttturtle-russ.github.io/tags/Model-Checking/"/>
+    <category term="Model Checking" scheme="https://tttturtle-russ.github.io/tags/Model-Checking/"/>
     
-    <category term="Protocol Analyize" scheme="http://tttturtle-russ.github.io/tags/Protocol-Analyize/"/>
+    <category term="Protocol Analyize" scheme="https://tttturtle-russ.github.io/tags/Protocol-Analyize/"/>
     
   </entry>
   
   <entry>
     <title>用mythril工具检测ether thief问题</title>
-    <link href="http://tttturtle-russ.github.io/2023/09/09/mythril-ether-thief/"/>
-    <id>http://tttturtle-russ.github.io/2023/09/09/mythril-ether-thief/</id>
+    <link href="https://tttturtle-russ.github.io/2023/09/09/mythril-ether-thief/"/>
+    <id>https://tttturtle-russ.github.io/2023/09/09/mythril-ether-thief/</id>
     <published>2023-09-09T03:09:21.000Z</published>
     <updated>2024-03-20T16:56:32.161Z</updated>
     
@@ -328,19 +328,19 @@
     
     
     
-    <category term="Formal Verification" scheme="http://tttturtle-russ.github.io/categories/Formal-Verification/"/>
+    <category term="Formal Verification" scheme="https://tttturtle-russ.github.io/categories/Formal-Verification/"/>
     
     
-    <category term="Tools" scheme="http://tttturtle-russ.github.io/tags/Tools/"/>
+    <category term="Tools" scheme="https://tttturtle-russ.github.io/tags/Tools/"/>
     
-    <category term="Symbol Execution" scheme="http://tttturtle-russ.github.io/tags/Symbol-Execution/"/>
+    <category term="Symbol Execution" scheme="https://tttturtle-russ.github.io/tags/Symbol-Execution/"/>
     
   </entry>
   
   <entry>
     <title>Spin和Promela简介</title>
-    <link href="http://tttturtle-russ.github.io/2023/07/23/Spin-Introduction/"/>
-    <id>http://tttturtle-russ.github.io/2023/07/23/Spin-Introduction/</id>
+    <link href="https://tttturtle-russ.github.io/2023/07/23/Spin-Introduction/"/>
+    <id>https://tttturtle-russ.github.io/2023/07/23/Spin-Introduction/</id>
     <published>2023-07-23T01:28:54.000Z</published>
     <updated>2024-03-20T16:56:32.155Z</updated>
     
@@ -354,19 +354,19 @@
     
     
     
-    <category term="Formal Verification" scheme="http://tttturtle-russ.github.io/categories/Formal-Verification/"/>
+    <category term="Formal Verification" scheme="https://tttturtle-russ.github.io/categories/Formal-Verification/"/>
     
     
-    <category term="Tools" scheme="http://tttturtle-russ.github.io/tags/Tools/"/>
+    <category term="Tools" scheme="https://tttturtle-russ.github.io/tags/Tools/"/>
     
-    <category term="Model Checking" scheme="http://tttturtle-russ.github.io/tags/Model-Checking/"/>
+    <category term="Model Checking" scheme="https://tttturtle-russ.github.io/tags/Model-Checking/"/>
     
   </entry>
   
   <entry>
     <title>什么是模型检测(Model Checking)</title>
-    <link href="http://tttturtle-russ.github.io/2023/06/12/what-model-checking/"/>
-    <id>http://tttturtle-russ.github.io/2023/06/12/what-model-checking/</id>
+    <link href="https://tttturtle-russ.github.io/2023/06/12/what-model-checking/"/>
+    <id>https://tttturtle-russ.github.io/2023/06/12/what-model-checking/</id>
     <published>2023-06-12T11:45:27.000Z</published>
     <updated>2024-03-20T16:56:32.162Z</updated>
     
@@ -381,10 +381,10 @@
     
     
     
-    <category term="Formal Verification" scheme="http://tttturtle-russ.github.io/categories/Formal-Verification/"/>
+    <category term="Formal Verification" scheme="https://tttturtle-russ.github.io/categories/Formal-Verification/"/>
     
     
-    <category term="Model Checking" scheme="http://tttturtle-russ.github.io/tags/Model-Checking/"/>
+    <category term="Model Checking" scheme="https://tttturtle-russ.github.io/tags/Model-Checking/"/>
     
   </entry>
   
