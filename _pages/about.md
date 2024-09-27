@@ -17,22 +17,22 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I'm a senior student majoring in Cyberspace Security and Engieering in [Huazhong University of Science and Technology](https://hust.edu.cn). I'm advised by [Prof. Dongliang Mu](https://mudongliang.github.io/about/) and [Prof. Bin Yuan](http://faculty.hust.edu.cn/yuanbin12/zh_CN/index.htm). I was an intern in University of Wisconsin, Madison, advised by [Prof. Chaowei Xiao](https://xiaocw11.github.io/) and working with his Ph.D student [Fangzhou Wu](https://scholar.google.com/citations?user=KDYZnvEAAAAJ&hl=en) early 2024. Now I'm a research assistant in HKUST working with [Prof. Dongdong She](https://cse.hkust.edu.hk/~dongdong/) and Qiao Zhang. 
+I'm a senior student majoring in Cyberspace Security and Engieering in [Huazhong University of Science and Technology](https://hust.edu.cn). I work with Prof. Dongdong She. I am boardly interested in **System Security, Software Security**. I will persue my Ph.D degree in HKUST with [Prof. Dongdong She](https://cse.hkust.edu.hk/~dongdong/).
 
 
 # 🔥 News
-- *2024.09*: &nbsp;🎉🎉 I get the offer from Prof. Dongdong She, HKUST!
+- *2024.09*: &nbsp;🎉🎉 I receive the Ph.D offer from Prof. Dongdong She, HKUST!
 
 
 # 📝 Publications 
-
+- Not yet...
 
 # 🎖 Honors and Awards
 - *2022.10* **Merit Student of HUST**, Huazhong University of Science and Technology (2022).
 - *2023.11* **National Cryptography Competition 3rd**, Chinese Association for Cryptologic Research.
 
 # 📖 Educations
-- *2021.09 - 2026.06*, Cyber Science and Engineering, Huazhong University of Science and Technology 
+- *2021.09 - 2025.06*, Cyber Science and Engineering QiMing Honored Class, Huazhong University of Science and Technology 
 
 # 💻 Internships
 - *2024.03 - 2024.09*, University of Wisconsin–Madison
