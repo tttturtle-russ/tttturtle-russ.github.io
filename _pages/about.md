@@ -32,7 +32,7 @@ I'm a senior student majoring in Cyberspace Security and Engieering in [Huazhong
 - *2023.11* **National Cryptography Competition 3rd**, Chinese Association for Cryptologic Research.
 
 # 📖 Educations
-- *2021.09 - 2025.06*, Cyber Science and Engineering QiMing Honored Class, Huazhong University of Science and Technology 
+- *2021.09 - 2025.06*, Cyber Science and Engineering Enlightened Honored Class, Huazhong University of Science and Technology 
 
 # 💻 Internships
 - *2024.03 - 2024.09*, University of Wisconsin–Madison
