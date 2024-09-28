@@ -16,7 +16,7 @@ main:
     url: "/#-educations"
 
   - title: "Posts"
-    url: "/posts"
+    url: "/posts/KCOV.md"
 
   - title: "Internships"
     url: "/#-internships"
