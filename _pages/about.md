@@ -29,7 +29,6 @@ I'm a senior student majoring in Cyberspace Security and Engieering in [Huazhong
 
 # 🎖 Honors and Awards
 - *2022.10* **Merit Student of HUST**, Huazhong University of Science and Technology (2022).
-- *2023.11* **National Cryptography Competition 3rd**, Chinese Association for Cryptologic Research.
 
 # 📖 Educations
 - *2021.09 - 2025.06*, Cyber Science and Engineering Enlightened Honored Class, Huazhong University of Science and Technology 
