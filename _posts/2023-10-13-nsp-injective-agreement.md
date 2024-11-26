@@ -8,7 +8,6 @@ tags:
 ---
 
 ## 1. 关于Injective Agreement(单射一致性),Weak Agreement(弱一致性)和Non-Injective Agreement(非单射一致性)
-
 对于一个协议，我们定义通讯双方为Alice和Bob,这三种一致性都有一个统一的前提，即 **Alice和Bob成功完成了一轮通讯，同时Alice作为通讯的发起者，ta单方面的认为ta在和Bob进行通讯,同时存在一个变量集𝟇,其中所有元素均为Alice和Bob通讯时使用的变量 **。有了该前提后，对于三种一致性分别满足如下的条件：
 
 - **Weak Agreement**:Bob 在通信过程中始终认为ta在与Alice通信。
