@@ -16,9 +16,9 @@ tags:
 
 > Non-Injective Agreement的实例: 中间人攻击,第一次通信Alice被欺骗,第一次通信完毕后中间人获得了Bob的私钥,此后Alice每次发起与Bob的通信请求,实际上都是在与中间人通信,这样对于Alice的每一次对话,Bob都不一定能找出唯一一次对话与之对应,这样一来就不符合单射一致性的条件,称这个协议是非单射一致性的。
 
-![Weak Agreement示意图](/img/Injective-Agreement的验证-Needham-Schroeder-Protocol/pic1.png)
-![Injective Agreement示意图](/img/Injective-Agreement的验证-Needham-Schroeder-Protocol/pic2.png)
-![Injective Agreement 的反例,但不是Non-Injective Agreement](/img/Injective-Agreement的验证-Needham-Schroeder-Protocol/pic3.png)
+![Weak Agreement示意图](assets/nsp-injective/pic1.png)
+![Injective Agreement示意图](assets/nsp-injective/pic2.png)
+![Injective Agreement 的反例,但不是Non-Injective Agreement](assets/nsp-injective/pic3.png)
 
 ## 2. 用spin验证Needham-Schroeder Protocol的单射一致性
 - 首先编写Alice的进程,关于Alice的行为有如下几点:

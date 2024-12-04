@@ -12,7 +12,9 @@ Syzkaller is the most famous kernel fuzzer in this world. It's developed by Goog
 
 ## How it works
 Before using it, I'd like to dig out what components consists Syzkaller and how they work. According to the official documentations, this figure can demonstrate the workflow of Syzkaller.
+
 ![](./assets/syzkaller/workflow.png)
+
 In a simplified overview, Syzkaller has a "manager" to control the test system. It employs multiple virtual machines with fuzzers inside them. The fuzzers will generate and run small programs which invoke a sequence of syscalls. Then the executors will use the randomized values as input data and execute these small programs. At mean time, fuzzer will use coverage info provided by [KCOV](https://docs.kernel.org/dev-tools/kcov.html) to guide the fuzzing.
 
 ## Setup 
