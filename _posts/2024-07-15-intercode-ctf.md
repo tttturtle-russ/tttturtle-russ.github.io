@@ -35,7 +35,7 @@ Inter-Code CTF 定义的任务很像现实世界中的“危险的” CTF 问题
 
 作者主要对 GPT4 模型进行了实验，GPT4 完成了 100 个任务中的 40 个，结果分布如下所示
 
-![Untitled](/img/当语言代理成为攻击者-通过CTF评估网络安全技能/1.png)
+![Untitled](/assets/figures/intercode/1.png)
 
 GPT4 的解题速度平均在 3.9 轮，也就是说，每 3.9 轮就能解出一个 flag。
 
