@@ -80,7 +80,7 @@ sudo apt install qemu-system-x86-64
 ```
 
 After installation, use the `create-image.sh` script to create a Debian image.
-```
+```shell
 mkdir image
 cp syzkaller/tools/create-image.sh image
 cd image
