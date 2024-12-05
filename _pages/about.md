@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I'm a senior student majoring in Cyberspace Security and Engieering in [Huazhong University of Science and Technology](https://hust.edu.cn). I am boardly interested in **System Security & Software Security**. I will persue my Ph.D degree in HKUST under the supervison of [Prof. Dongdong She](https://cse.hkust.edu.hk/~dongdong/).
+I'm a senior student majoring in Cyber Science and Engineering at [Huazhong University of Science and Technology](https://hust.edu.cn). I am broadly interested in **System Security & Software Security**. I will pursue my Ph.D degree at HKUST under the supervision of [Prof. Dongdong She](https://cse.hkust.edu.hk/~dongdong/).
 
 
 # 🔥 News
