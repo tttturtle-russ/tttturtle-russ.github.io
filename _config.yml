@@ -21,11 +21,11 @@ repository               : "tttturtle-russ/tttturtle-russ.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "test.jpg"
+  avatar           : "profile.jpg"
   name             : "Haoyang Liu"
   pronouns         : # example: "she/her"  
   bio              : "Research Assistant at CSE, HKUST."
-  location         : "Dongguan, China"
+  location         : "HongKong SAR, China"
   employer         :
   uri              : # URL
   email            : "tttturtleruss@gmail.com" 
