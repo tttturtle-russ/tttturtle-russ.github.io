@@ -9,7 +9,9 @@ redirect_from:
 
 I'm a final-year undergraduate student majoring in Cyber Science and Engineering at [Huazhong University of Science and Technology](https://hust.edu.cn). I am broadly interested in **System Security & Software Security using Nerual-Symbolic Methods**. I will pursue my Ph.D degree at HKUST under the supervision of [Prof. Dongdong She](https://cse.hkust.edu.hk/~dongdong/).
 
-Feel free to reach me via tttturtleruss@{[gmail.com](mailto://tttturtleruss@gmail.com), [archlinuxcn.org](mailto://tttturtleruss@archlinuxcn.org)}, my fingerprint is [1F91 66F7 89A7 9B77 30B8 428E 73D1 D518 1710 70D8](/files/TurtleRuss%20(Arch%20GPG%20Key)_0x171070D8_public.asc).
+Feel free to reach me via tttturtleruss@{[gmail.com](mailto://tttturtleruss@gmail.com), [archlinuxcn.org](mailto://tttturtleruss@archlinuxcn.org)}.
+
+My fingerprint is [1F91 66F7 89A7 9B77 30B8 428E 73D1 D518 1710 70D8](/files/TurtleRuss%20(Arch%20GPG%20Key)_0x171070D8_public.asc).
 
 
 # 🔥 News
