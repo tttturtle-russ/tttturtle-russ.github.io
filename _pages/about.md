@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I'm a final-year undergraduate student majoring in Cyber Science and Engineering at [Huazhong University of Science and Technology](https://hust.edu.cn). I am broadly interested in **System Security & Software Security using Neural-Symbolic Methods**. I will pursue my Ph.D degree at HKUST under the supervision of [Prof. Dongdong She](https://cse.hkust.edu.hk/~dongdong/). Now I'm working closely with [Qiao Zhang](https://jok1nq.github.io/).
+I'm a final-year undergraduate student majoring in Cyber Science and Engineering at [Huazhong University of Science and Technology](https://hust.edu.cn). I am broadly interested in **System Security & Software Security**. I will pursue my Ph.D degree at HKUST under the supervision of [Prof. Dongdong She](https://cse.hkust.edu.hk/~dongdong/). Now I'm working closely with [Qiao Zhang](https://jok1nq.github.io/).
 
 Feel free to reach me via tttturtleruss@{[gmail.com](mailto://tttturtleruss@gmail.com), [archlinuxcn.org](mailto://tttturtleruss@archlinuxcn.org)}.
 
