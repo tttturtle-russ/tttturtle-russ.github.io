@@ -22,8 +22,8 @@ My fingerprint is [1F91 66F7 89A7 9B77 30B8 428E 73D1 D518 1710 70D8](/files/Tur
 - Not yet...
 
 # 🎖 Honors and Awards
-- *2025.06* **Outstanding Undergraduate Graduate Student of HUST**, Huazhong University of Science and Technology
-- *2022.10* **Merit Student of HUST**, Huazhong University of Science and Technology
+- *2025.06* **Outstanding Undergraduate Graduate Student**, Huazhong University of Science and Technology
+- *2022.10* **Merit Student**, Huazhong University of Science and Technology
 
 # 📖 Educations
 - *2021.09 - 2025.06*, Cyber Science and Engineering Enlightened Honored Class, Huazhong University of Science and Technology 
