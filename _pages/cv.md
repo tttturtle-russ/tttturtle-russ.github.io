@@ -13,7 +13,7 @@ redirect_from:
 
 Education
 ======
-* B.S. in Cyber Science and Engineering, Huazhong University of Science and Technology, 2025 (expected)
+* B.Eng. in Cyber Science and Engineering, Huazhong University of Science and Technology, 2025 (expected)
 
 Experiences
 ======
