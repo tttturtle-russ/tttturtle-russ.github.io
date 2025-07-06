@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I'm a Ph.D student advised by [Prof. Dongdong She](https://cse.hkust.edu.hk/~dongdong/) at [The Hong Kong University of Science and Technology](https://hkust.edu.hk). I am broadly interested in **System Security & Software Security**. Now I'm working closely with [Qiao Zhang](https://jok1nq.github.io/). I earned my bachelor's degree from the [School of Cyber Science and Engineering](https://cse.hust.edu.cn/)at [Huazhong University of Science and Technology](https://hust.edu.cn).
+I'm a Ph.D student advised by [Prof. Dongdong She](https://cse.hkust.edu.hk/~dongdong/) at [The Hong Kong University of Science and Technology](https://hkust.edu.hk). I am broadly interested in **System Security & Software Security**. Now I'm working closely with [Qiao Zhang](https://jok1nq.github.io/). I earned my bachelor's degree from the [School of Cyber Science and Engineering](https://cse.hust.edu.cn/) at [Huazhong University of Science and Technology](https://hust.edu.cn).
 
 Feel free to reach me via tttturtleruss@{[gmail.com](mailto://tttturtleruss@gmail.com), [archlinuxcn.org](mailto://tttturtleruss@archlinuxcn.org)}.
 
