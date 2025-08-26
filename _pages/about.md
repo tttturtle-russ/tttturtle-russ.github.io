@@ -9,7 +9,7 @@ redirect_from:
 
 I'm a Ph.D student advised by [Prof. Dongdong She](https://cse.hkust.edu.hk/~dongdong/) at [The Hong Kong University of Science and Technology](https://hkust.edu.hk). I am broadly interested in **System Security & Software Security**. Now I'm working closely with [Qiao Zhang](https://jok1nq.github.io/). I earned my bachelor's degree from the [School of Cyber Science and Engineering](https://cse.hust.edu.cn/) at [Huazhong University of Science and Technology](https://hust.edu.cn).
 
-Feel free to reach me via tttturtleruss@{[gmail.com](mailto://tttturtleruss@gmail.com), [archlinuxcn.org](mailto://tttturtleruss@archlinuxcn.org)}.
+Feel free to reach me via [hliueq@cse.ust.hk](mailto://hliueq@cse.ust.hk) or [tttturtleruss@gmail.com](mailto://tttturtleruss@gmail.com).
 
 My fingerprint is [1F91 66F7 89A7 9B77 30B8 428E 73D1 D518 1710 70D8](/files/TurtleRuss%20(Arch%20GPG%20Key)_0x171070D8_public.asc).
 
