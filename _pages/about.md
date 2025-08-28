@@ -25,8 +25,9 @@ My fingerprint is [1F91 66F7 89A7 9B77 30B8 428E 73D1 D518 1710 70D8](/files/Tur
 - *2025.06* **Outstanding Undergraduate Graduate Student**, Huazhong University of Science and Technology
 - *2022.10* **Merit Student**, Huazhong University of Science and Technology
 
-# 📖 Educations
-- *2021.09 - 2025.06*, Cyber Science and Engineering Enlightened Honored Class, Huazhong University of Science and Technology 
+# 📖 Services
+- *ASE '25*, Subreviewer
+- *Oakland S&P '25*, Subreviewer
 
 # 💻 Internships
 - *2025.03 - 2025.07*, [BlockSec](https://blocksec.com/), DeFI Security with LLM Assistance
