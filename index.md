@@ -4,16 +4,12 @@ layout: homepage
 
 ## About Me
 
-I am a Ph.D. student at ...
+I'm a Ph.D student advised by [Prof. Dongdong SHE](https://cse.hkust.edu.hk/~dongdong/) at [The Hong Kong University of Science and Technology](https://hkust.edu.hk). I earned my bachelor's degree from the [School of Cyber Science and Engineering](https://cse.hust.edu.cn/) at [Huazhong University of Science and Technology](https://hust.edu.cn). Now I'm working closely with [Qiao Zhang](https://jok1nq.github.io/).
 
 ## Research Interests
 
-- **Computer Vision:** image recognition, image generation, video captioning
-- **Machine Learning:** meta-learning, incremental learning, transfer learning
+- **LLM4Security:** Apply LLM to improve and solve traditional security problems such as program analysis and system analysis.
 
 ## News
 
-- **[Feb. 2020]** Our paper about incremental learning is accepted to CVPR 2020.
-- **[Feb. 2020]** We will host the ACM Multimedia Asia 2020 conference in Singapore!
-- **[Sept. 2019]** Our paper about few-shot learning is accepted to NeurIPS 2019.
-- **[Mar. 2019]** Our paper about few-shot learning is accepted to CVPR 2019.
+- **[Sep. 2024]** I receive the Ph.D offer from Prof. Dongdong She, HKUST!
